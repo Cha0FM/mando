@@ -46,4 +46,4 @@ Incluya la carpeta `retina` en su directorio `projects` como se muestra a contin
 Puede navegar a través del menú lateral por parte de la API generada. El resto de la API del proyecto debe crearla usted. Siga los pasos de la *Guía de instalación de herramientas para compilación multiplataforma en C* donde se le indica cómo generar la API usando Doxygen.
 
 Puede modificar este fichero README.md para documentar su proyecto. Este README.md será la portada de su API. Puede poner imágenes, enlaces a vídeos y URLs, hacer tablas, formatear el texto, hacer listas, introducir emojis, etc. Todo debe hacerlo con estilo **Markdown**. Puede buscar muchos ejemplos en la red y ver cómo usarlo en el [sitio web](https://www.markdownguide.org/basic-syntax/).
-
+-Javi
