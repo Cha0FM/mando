@@ -23,7 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "MY_NRF24.h" //Hal driver del NRF
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -74,7 +73,6 @@ char AckPayload[32]; //Array del ACK
 int main(void)
 {
    /* USER CODE BEGIN 1 */
-GPIO_PinState boton;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -83,7 +81,7 @@ GPIO_PinState boton;
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+ bool test = false;
   /* USER CODE END Init */
 
   /* Configure the system clock - Nota: el nuestro esta a 84 MHZ por requerimientos del transceptor*/ 
@@ -126,9 +124,8 @@ NRF24_enableAckPayload();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    boton = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 
-    if(boton == GPIO_PIN_SET)
+    if(test == true)
     {
       myTxData[0] = 1;
     }
@@ -150,6 +147,7 @@ NRF24_enableAckPayload();
 HAL_Delay(1000); //Periodo del bucle principal
   }
   /* USER CODE END 3 */
+
 }
 
 /**
@@ -292,12 +290,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PA0 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : CSNpin_Pin CEpin_Pin */
   GPIO_InitStruct.Pin = CSNpin_Pin|CEpin_Pin;
