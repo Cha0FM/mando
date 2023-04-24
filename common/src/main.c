@@ -40,6 +40,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+ADC_HandleTypeDef hadc1;
+
 SPI_HandleTypeDef hspi1;
 
 UART_HandleTypeDef huart2;
@@ -53,6 +55,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_ADC1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -64,6 +67,7 @@ uint64_t TxpipeAddrs = 0x11223344AA;
 //Variables de transmisión
 uint32_t myTxData[32]; //variable de envio
 char AckPayload[32]; //Array del ACK
+uint32_t adcVal;
 /* USER CODE END 0 */
 
 /**
@@ -81,7 +85,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
- bool test = false;
   /* USER CODE END Init */
 
   /* Configure the system clock - Nota: el nuestro esta a 84 MHZ por requerimientos del transceptor*/ 
@@ -96,6 +99,8 @@ int main(void)
   MX_GPIO_Init(); //GPIO para el botón
   MX_SPI1_Init(); //SPI para el NRFL
   MX_USART2_UART_Init();//UART para depuración 
+  MX_ADC1_Init();
+
  
   /* USER CODE BEGIN 2 */
 NRF24_begin(CEpin_GPIO_Port,CSNpin_Pin,GPIO_PIN_9,hspi1);
@@ -113,7 +118,7 @@ NRF24_setPayloadSize(32);//tamaño de la payload
 NRF24_enableDynamicPayloads();
 NRF24_enableAckPayload();
 
-
+HAL_ADC_Start(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -125,14 +130,10 @@ NRF24_enableAckPayload();
 
     /* USER CODE BEGIN 3 */
 
-    if(test == true)
-    {
-      myTxData[0] = 1;
-    }
-    else{
-      myTxData[0] = 0;
+    adcVal= HAL_ADC_GetValue(&hadc1);
+      myTxData[0] = adcVal;
 
-    }
+    
     //TRANSMISIÓN CON ACK 
     if(NRF24_write(myTxData, 32))//Trasmisión
    {
@@ -195,6 +196,58 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief ADC1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_ADC1_Init(void)
+{
+
+  /* USER CODE BEGIN ADC1_Init 0 */
+
+  /* USER CODE END ADC1_Init 0 */
+
+  ADC_ChannelConfTypeDef sConfig = {0};
+
+  /* USER CODE BEGIN ADC1_Init 1 */
+
+  /* USER CODE END ADC1_Init 1 */
+
+  /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
+  */
+  hadc1.Instance = ADC1;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV8;
+  hadc1.Init.Resolution = ADC_RESOLUTION_8B;
+  hadc1.Init.ScanConvMode = DISABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
+  hadc1.Init.DiscontinuousConvMode = DISABLE;
+  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.DMAContinuousRequests = DISABLE;
+  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  if (HAL_ADC_Init(&hadc1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_0;
+  sConfig.Rank = 1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN ADC1_Init 2 */
+
+  /* USER CODE END ADC1_Init 2 */
+
 }
 
 /**
