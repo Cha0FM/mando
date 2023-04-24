@@ -1,4 +1,4 @@
-# SDG2
+# Mando
 Es es el proyecto base del curso 2022-2023 para los alumnos de la asignatura de Sistemas Digitales II. 
 Los códigos están parcialmente documentados para que pueda ser interpretado por Doxygen a fin de que pueda tener ejemplos de cómo hacer la documentación de su propio código.
 
