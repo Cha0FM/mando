@@ -118,7 +118,7 @@ NRF24_setPayloadSize(32);//tamaño de la payload
 NRF24_enableDynamicPayloads();
 NRF24_enableAckPayload();
 
-HAL_ADC_Start(&hadc1);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,12 +130,17 @@ HAL_ADC_Start(&hadc1);
 
     /* USER CODE BEGIN 3 */
 
-    adcVal= HAL_ADC_GetValue(&hadc1);
+      HAL_ADC_Start(&hadc1);
+      adcVal= HAL_ADC_GetValue(&hadc1);
       myTxData[0] = adcVal;
 
     
+
+      HAL_UART_Transmit(&huart2, (uint8_t *)myTxData, 32, 10);
+
+    
     //TRANSMISIÓN CON ACK 
-    if(NRF24_write(myTxData, 32))//Trasmisión
+    if(NRF24_write(myTxData, 32))//Transmisión
    {
 			NRF24_read(AckPayload, 32);
       HAL_UART_Transmit(&huart2, (uint8_t *)"Transmitido Correctamente\r\n", strlen("Transmitido Correctamente\r\n"), 10);
@@ -143,6 +148,7 @@ HAL_ADC_Start(&hadc1);
 			char myDataack[80];//Variable del ack de vuelta
 			sprintf(myDataack, "AckPayload:  %s \r\n", AckPayload);
 			HAL_UART_Transmit(&huart2, (uint8_t *)myDataack, strlen(myDataack), 10);
+
 		}
 
 HAL_Delay(1000); //Periodo del bucle principal
