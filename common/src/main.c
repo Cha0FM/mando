@@ -129,7 +129,6 @@ NRF24_enableAckPayload();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
       HAL_ADC_Start(&hadc1);
       adcVal= HAL_ADC_GetValue(&hadc1);
       myTxData[0] = adcVal;
