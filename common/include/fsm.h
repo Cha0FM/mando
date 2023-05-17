@@ -1,90 +1,70 @@
-/**
- * @file fsm.h
- * @brief Header for fsm.c file.
- * @author Teachers from the Departamento de Ingeniería Electrónica. Original authors: José M. Moya and Pedro J. Malagón. Latest contributor: Román Cárdenas.
- * @date 2023-01-01
- */
-
 #ifndef FSM_H_
 #define FSM_H_
 
-/* Includes ------------------------------------------------------------------*/
-/* Standard C includes */
 #include <stdbool.h>
 
-/* Typedefs --------------------------------------------------------------------*/
-
-/**
- * @brief Make `fsm_t` struct public 
- */
 typedef struct fsm_t fsm_t;
 
-/**
- * @brief Alias to refer to a pointer to an input condition function.
- */
-typedef bool (*fsm_input_func_t)(fsm_t *); 
+/// @brief alias for the input condition function of a Finite State Machine (FSM).
+typedef bool (*fsm_input_func_t)(fsm_t *);
 
-/**
- * @brief Alias to refer to a pointer to an output modification function.
- */
+/// @brief alias for the output modification function of a Finite State Machine (FSM).
 typedef void (*fsm_output_func_t)(fsm_t *);
 
-/**
- * @brief Structure to define a state machine transition table.
- */
+/// @brief transition of a Finite State Machine (FSM).
 typedef struct fsm_trans_t
 {
-  int orig_state;        /*!< Origin state  */
-  fsm_input_func_t in;   /*!< Input condition function */
-  int dest_state;        /*!< Output state */
-  fsm_output_func_t out; /*!< Output modification function */
+    int orig_state;        //!< origin state.
+    fsm_input_func_t in;   //!< input condition function.
+    int dest_state;        //!< destination state.
+    fsm_output_func_t out; //!< output modification function.
 } fsm_trans_t;
 
-/**
- * @brief Structure that defines a state machine.
- */
+/// @brief struct to define a Finite State Machine (FSM).
 struct fsm_t
 {
-  int current_state; /*!< Current state of the FSM */
-  fsm_trans_t *p_tt; /*!< Pointer to the  state machine transition table */
+    int current_state; //!< current state of the FSM.
+    fsm_trans_t *p_tt; //!< pointer to the state transition table.
 };
 
-/* Function prototypes -----------------------------------------------------------------*/
 /**
- * @brief Allocates memory and create a new state machine from a transition table.
+ * @brief allocates memory on the heap and returns a pointer to a new Finite State Machine (FSM).
  *
- * The starting state of the state machine will correspond to the origin state of the first transition found in the transition table.  The transition table must end with a null transition {-1, NULL, -1, NULL}. In this way, the state machine will be able to detect that it has reached the end of the transition table.
+ * @note the initial state of the FSM corresponds to the origin state of the first transition of the table
+ * @note the table must end with a null transition {-1, NULL, -1, NULL}. This is how the library detects the end of the table.
+ * @note this function allocates memory in the heap. Once you are done with the FSM, you must call fsm_destroy to free the memory.
  *
- * @param p_tt Pointer to the  state machine transition table
- * @return fsm_t* Pointer to the memory address where the new state machine is located
+ * @param p_tt ppointer to the transition table associated to the FSM.
+ * @return fsm_t* pointer to the new FSM.
  */
 fsm_t *fsm_new(fsm_trans_t *p_tt);
 
 /**
- * @brief Create a new state machine from a table of transitions.
+ * @brief Configures the initial state of a provided Finite State Machine (FSM) according to its transition table.
  *
- * The starting state of the state machine will correspond to the origin state of the first transition found in the transition table. The transition table must end with a null transition {-1, NULL, -1, NULL}. This will allow the state machine to detect that it has reached the end of the table. Unlike `fsm_new`, this function does not allocate memory for the state machine. Instead, it uses the memory address provided by the user.
+ * @note the initial state of the FSM corresponds to the origin state of the first transition of the table
+ * @note the table must end with a null transition {-1, NULL, -1, NULL}. This is how the library detects the end of the table.
  *
- * @param p_fsm Pointer to the memory address where the new state machine is located
- * @param p_tt Pointer to the  state machine transition table
+ * @param p_fsm pointer to the FSM being initialized.
+ * @param p_tt ppointer to the transition table associated to the FSM.
  */
 void fsm_init(fsm_t *p_fsm, fsm_trans_t *p_tt);
 
 /**
- * @brief Check the full transition table.
+ * @brief it reads the transition table of a Finite State Machine (FSM) and, if any input condition is met,
+ * it moves to a new state and executes the corresponding output modification function
  *
- * It loops through the transition table and, if an input condition is met, it switches to a new state and executes the corresponding output modification function.
- *
- * @param p_fsm Pointer to the memory address where the new state machine is located
+ * @param p_fsm pointer to the FSM.
  */
 void fsm_fire(fsm_t *p_fsm);
 
 /**
- * @brief
+ * @brief Frees the memory allocated in the heap for a given Finite State Machine (FSM).
  *
- * It frees the memory previously allocated for the state machine. Once this function is called, the state machine becomes unusable. It is only necessary to call this function if the state machine was previously created by calling the `fsm_new` function.
+ * @note Once called this function, the FSM cannot be used again.
+ * @note You only need to call this function if the FSM was created using fsm_new.
  *
- * @param p_fsm Pointer to the memory address where the new state machine is located
+ * @param p_fsm pointer to the FSM being destroyed.
  */
 void fsm_destroy(fsm_t *p_fsm);
 

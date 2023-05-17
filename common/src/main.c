@@ -65,8 +65,8 @@ static void MX_ADC1_Init(void);
 uint64_t TxpipeAddrs = 0x11223344AA;
 
 //Variables de transmisión
-uint32_t myTxData[32]; //variable de envio
-char AckPayload[32]; //Array del ACK
+uint32_t myTxData[2]; //variable de envio
+bool AckPayload[1]; //ACK
 uint32_t adcVal;
 /* USER CODE END 0 */
 
@@ -87,7 +87,7 @@ int main(void)
   /* USER CODE BEGIN Init */
   /* USER CODE END Init */
 
-  /* Configure the system clock - Nota: el nuestro esta a 84 MHZ por requerimientos del transceptor*/ 
+  /* Configure the system clock - Nota: el nuestro esta a 16 MHZ */ 
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
@@ -135,22 +135,16 @@ NRF24_enableAckPayload();
 
     
 
-      HAL_UART_Transmit(&huart2, (uint8_t *)myTxData, 32, 10);
 
     
     //TRANSMISIÓN CON ACK 
-    if(NRF24_write(myTxData, 32))//Transmisión
+    if(NRF24_write(myTxData, 2))//Transmisión
    {
-			NRF24_read(AckPayload, 32);
-      HAL_UART_Transmit(&huart2, (uint8_t *)"Transmitido Correctamente\r\n", strlen("Transmitido Correctamente\r\n"), 10);
-			
-			char myDataack[80];//Variable del ack de vuelta
-			sprintf(myDataack, "AckPayload:  %s \r\n", AckPayload);
-			HAL_UART_Transmit(&huart2, (uint8_t *)myDataack, strlen(myDataack), 10);
+			NRF24_read(AckPayload, 1);
 
 		}
 
-HAL_Delay(1000); //Periodo del bucle principal
+HAL_Delay(1); //Periodo del bucle principal
   }
   /* USER CODE END 3 */
 
