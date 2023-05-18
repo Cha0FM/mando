@@ -317,6 +317,14 @@ bool NRF24_available(void)
 	return NRF24_availablePipe(NULL);
 }
 //17. Read received data
+/**
+ * @brief Leer los datos recibidos
+ * 
+ * @param buf buffer de datos de entrada
+ * @param len longitud del buffer
+ * @return true 
+ * @return false 
+ */
 bool NRF24_read( void* buf, uint8_t len )
 {
 	NRF24_read_payload( buf, len );

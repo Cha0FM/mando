@@ -109,6 +109,14 @@ bool NRF24_write( const void* buf, uint8_t len );
 //16. Check for available data to read
 bool NRF24_available(void);
 //17. Read received data
+/**
+ * @brief Leer los datos recibidos
+ * 
+ * @param buf buffer de datos de entrada
+ * @param len longitud del buffer
+ * @return true 
+ * @return false 
+ */
 bool NRF24_read( void* buf, uint8_t len );
 //18. Open Tx pipe for writing (Cannot perform this while Listenning, has to call NRF24_stopListening)
 void NRF24_openWritingPipe(uint64_t address);

@@ -20,9 +20,10 @@
 #include "main.h"
 #include "stm32f4xx_hal.h" 
 #include <stdio.h>
+#include "MY_NRF24.h" //Hal driver del NRF
+#include "fsm_adc.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "MY_NRF24.h" //Hal driver del NRF
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,6 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define TIEMPO_ADC_MS 2
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -63,7 +65,6 @@ static void MX_ADC1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint64_t TxpipeAddrs = 0x11223344AA;
-
 //Variables de transmisión
 uint32_t myTxData[2]; //variable de envio
 bool AckPayload[1]; //ACK
@@ -119,34 +120,15 @@ NRF24_enableDynamicPayloads();
 NRF24_enableAckPayload();
 
 
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  //Bucle principal del programa 
+fsm_t * p_adc = fsm_adc_new(TIEMPO_ADC_MS);
+ 
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-      HAL_ADC_Start(&hadc1);
-      adcVal= HAL_ADC_GetValue(&hadc1);
-      myTxData[0] = adcVal;
-
+  fsm_fire(p_adc);
     
-
-
-    
-    //TRANSMISIÓN CON ACK 
-    if(NRF24_write(myTxData, 2))//Transmisión
-   {
-			NRF24_read(AckPayload, 1);
-
-		}
-
-HAL_Delay(1); //Periodo del bucle principal
+  HAL_Delay(1); //Periodo del bucle principal
   }
-  /* USER CODE END 3 */
+  fsm_destroy(p_adc);
 
 }
 
