@@ -13,22 +13,24 @@ typedef struct
     uint32_t adcVal;        /*!< Valor del Potenciometro ADC de 0-255 */
     bool ack[1];               /*!< AcK de vuelta */
     uint32_t timeAdc;      /*!< Duracion entre cada muestra del ADC*/
-    ADC_HandleTypeDef hadc1; /*!< Handler para el ADC*/
     uint32_t myTxData[2]; /*!< Buffer de transmision*/
 } fsm_adc_t;
 
 /**
- * @brief Lee el valor existente en el ADC
+ * @brief Lee el valor existente en el ADC y lo transmite, esperando ack
  * 
  * @param p_fsm Puntero a la FSM del ADC
  */
 void do_read_transmit_adc(fsm_t *p_fsm)
 {
  fsm_adc_t * p_adc = ( fsm_adc_t *) p_fsm ;
-    HAL_ADC_Start(&p_adc -> hadc1);
-    p_adc -> myTxData[0] = HAL_ADC_GetValue(&p_adc -> hadc1);
+    HAL_ADC_Start(&hadc1);
+    p_adc -> myTxData[0] = HAL_ADC_GetValue(&hadc1);
 
-    NRF24_write(p_adc -> myTxData, 2);
+    if(NRF24_write(p_adc -> myTxData, 2))
+    {
+        NRF24_read(p_adc -> ack, 1);
+    }
 
 }
 
@@ -55,7 +57,7 @@ return true;
 bool check_ack(fsm_t *p_fsm)
 {
     fsm_adc_t * p_adc = ( fsm_adc_t *) p_fsm ;
-    return NRF24_read(p_adc -> ack, 1);
+    return p_adc -> ack;
     
 }
 
@@ -104,4 +106,6 @@ void fsm_adc_init(fsm_t *p_fsm, uint32_t timeAdc)
  p_adc -> adcVal = 0;
  p_adc -> ack[0] = false;
  p_adc -> timeAdc = timeAdc;
+ p_adc -> myTxData[0] = 0;
+ p_adc -> myTxData[1] = 0;
 }
