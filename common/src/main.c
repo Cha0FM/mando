@@ -77,23 +77,12 @@ uint32_t adcVal;
   */
 int main(void)
 {
-   /* USER CODE BEGIN 1 */
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
+  
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* USER CODE BEGIN Init */
-  /* USER CODE END Init */
-
   /* Configure the system clock - Nota: el nuestro esta a 16 MHZ */ 
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */ 
  
@@ -102,8 +91,7 @@ int main(void)
   MX_USART2_UART_Init();//UART para depuración 
   MX_ADC1_Init();
 
- 
-  /* USER CODE BEGIN 2 */
+
 NRF24_begin(CEpin_GPIO_Port,CSNpin_Pin,GPIO_PIN_9,hspi1);
 nrf24_DebugUART_Init(huart2);
 
