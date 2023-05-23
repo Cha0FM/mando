@@ -1,13 +1,22 @@
-/**
- * @file NRF24L01/NRF24L01+
- * @author Mohamed Yaqoob (MYaqoobEmbedded YouTube Channel)
- * @brief This is an STM32 device driver library for the NRF24L01 Nordic Radio transceiver, using STM HAL libraries
- * @version 1.0
- * @date 10/11/2018
- * 
- * @copyright Copyright (c) 2023
- * 
- */
+/*
+Library:					NRF24L01/NRF24L01+
+Written by:				Mohamed Yaqoob (MYaqoobEmbedded YouTube Channel)
+Date Written:			10/11/2018
+Last modified:		-/-
+Description:			This is an STM32 device driver library for the NRF24L01 Nordic Radio transceiver, using STM HAL libraries
+
+References:				This library was written based on the Arduino NRF24 Open-Source library by J. Coliz and the NRF24 datasheet
+										- https://github.com/maniacbug/RF24
+										- https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf
+										
+* Copyright (C) 2018 - M. Yaqoob
+   This is a free software under the GNU license, you can redistribute it and/or modify it under the terms
+   of the GNU General Public Licenseversion 3 as published by the Free Software Foundation.
+	
+   This software library is shared with puplic for educational purposes, without WARRANTY and Author is not liable for any damages caused directly
+   or indirectly by this software, read more about this on the GNU General Public License.
+*/
+
 #include "stm32f4xx_hal.h"   //** Change this according to your STM32 series **//
 #include "nRF24L01.h"
 #include <stdlib.h>
@@ -98,6 +107,10 @@ uint8_t NRF24_get_status(void);
  */
 void NRF24_begin(GPIO_TypeDef *nrf24PORT, uint16_t nrfCSN_Pin, uint16_t nrfCE_Pin, SPI_HandleTypeDef nrfSPI);
 //13. Listen on open pipes for reading (Must call NRF24_openReadingPipe() first)
+/**
+ * @brief Prepara el Rx para recibir
+ * 
+ */
 void NRF24_startListening(void);
 //14. Stop listening (essential before any write operation)
 /**
@@ -137,6 +150,12 @@ bool NRF24_read( void* buf, uint8_t len );
  */
 void NRF24_openWritingPipe(uint64_t address);
 //19. Open reading pipe
+/**
+ * @brief Prepara el Rx para recibir, con direccion inequivoca
+ * 
+ * @param number Numero de Rx
+ * @param address Dirección inequívoca para identificar el enlace
+ */
 void NRF24_openReadingPipe(uint8_t number, uint64_t address);
 //20 set transmit retries (rf24_Retries_e) and delay
 void NRF24_setRetries(uint8_t delay, uint8_t count);

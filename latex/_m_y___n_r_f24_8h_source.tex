@@ -2,175 +2,193 @@
 \hypertarget{_m_y___n_r_f24_8h_source}{}\label{_m_y___n_r_f24_8h_source}\index{port/nucleo\_stm32f446re/include/MY\_NRF24.h@{port/nucleo\_stm32f446re/include/MY\_NRF24.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal.h"{}}\ \ \ \textcolor{comment}{//**\ Change\ this\ according\ to\ your\ STM32\ series\ **//}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{n_r_f24_l01_8h}{nRF24L01.h}}"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string.h>}}
-\DoxyCodeLine{00016\ \textcolor{comment}{//1.\ Pinout\ Ports\ and\ Pin}}
-\DoxyCodeLine{00017\ \textcolor{comment}{//\#define\ nrf\_CSN\_PORT\ \ \ \ \ \ GPIOD}}
-\DoxyCodeLine{00018\ \textcolor{comment}{//\#define\ nrf\_CSN\_PIN\ \ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_0}}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Library:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NRF24L01/NRF24L01+}}
+\DoxyCodeLine{00003\ \textcolor{comment}{Written\ by:\ \ \ \ \ \ \ \ \ \ \ \ \ Mohamed\ Yaqoob\ (MYaqoobEmbedded\ YouTube\ Channel)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{Date\ Written:\ \ \ \ \ \ \ \ \ \ \ 10/11/2018}}
+\DoxyCodeLine{00005\ \textcolor{comment}{Last\ modified:\ \ \ \ \ \ -\//-\/}}
+\DoxyCodeLine{00006\ \textcolor{comment}{Description:\ \ \ \ \ \ \ \ \ \ \ \ This\ is\ an\ STM32\ device\ driver\ library\ for\ the\ NRF24L01\ Nordic\ Radio\ transceiver,\ using\ STM\ HAL\ libraries}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ \textcolor{comment}{References:\ \ \ \ \ \ \ \ \ \ \ \ \ This\ library\ was\ written\ based\ on\ the\ Arduino\ NRF24\ Open-\/Source\ library\ by\ J.\ Coliz\ and\ the\ NRF24\ datasheet}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ https://github.com/maniacbug/RF24}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss\_Preliminary\_Product\_Specification\_v1\_0.pdf}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ Copyright\ (C)\ 2018\ -\/\ M.\ Yaqoob}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ This\ is\ a\ free\ software\ under\ the\ GNU\ license,\ you\ can\ redistribute\ it\ and/or\ modify\ it\ under\ the\ terms}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ of\ the\ GNU\ General\ Public\ Licenseversion\ 3\ as\ published\ by\ the\ Free\ Software\ Foundation.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ This\ software\ library\ is\ shared\ with\ puplic\ for\ educational\ purposes,\ without\ WARRANTY\ and\ Author\ is\ not\ liable\ for\ any\ damages\ caused\ directly}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ or\ indirectly\ by\ this\ software,\ read\ more\ about\ this\ on\ the\ GNU\ General\ Public\ License.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*/}}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{comment}{//\#define\ nrf\_CE\_PORT\ \ \ \ \ \ \ \ \ \ \ GPIOD}}
-\DoxyCodeLine{00021\ \textcolor{comment}{//\#define\ nrf\_CE\_PIN\ \ \ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_1}}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{comment}{//****\ TypeDefs\ ****//}}
-\DoxyCodeLine{00024\ \textcolor{comment}{//1.\ Power\ Amplifier\ function,\ NRF24\_setPALevel()\ }}
-\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ }
-\DoxyCodeLine{00026\ \ \ \ \ RF24\_PA\_m18dB\ =\ 0,}
-\DoxyCodeLine{00027\ \ \ \ \ RF24\_PA\_m12dB,}
-\DoxyCodeLine{00028\ \ \ \ \ RF24\_PA\_m6dB,}
-\DoxyCodeLine{00029\ \ \ \ \ RF24\_PA\_0dB,}
-\DoxyCodeLine{00030\ \ \ \ \ RF24\_PA\_ERROR\ }
-\DoxyCodeLine{00031\ \}rf24\_pa\_dbm\_e\ ;}
-\DoxyCodeLine{00032\ \textcolor{comment}{//2.\ NRF24\_setDataRate()\ input}}
-\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ }
-\DoxyCodeLine{00034\ \ \ \ \ RF24\_1MBPS\ =\ 0,}
-\DoxyCodeLine{00035\ \ \ \ \ RF24\_2MBPS,}
-\DoxyCodeLine{00036\ \ \ \ \ RF24\_250KBPS}
-\DoxyCodeLine{00037\ \}rf24\_datarate\_e;}
-\DoxyCodeLine{00038\ \textcolor{comment}{//3.\ NRF24\_setCRCLength()\ input}}
-\DoxyCodeLine{00039\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ }
-\DoxyCodeLine{00040\ \ \ \ \ RF24\_CRC\_DISABLED\ =\ 0,}
-\DoxyCodeLine{00041\ \ \ \ \ RF24\_CRC\_8,}
-\DoxyCodeLine{00042\ \ \ \ \ RF24\_CRC\_16}
-\DoxyCodeLine{00043\ \}rf24\_crclength\_e;}
-\DoxyCodeLine{00044\ \textcolor{comment}{//4.\ Pipe\ address\ registers}}
-\DoxyCodeLine{00045\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ NRF24\_ADDR\_REGS[7]\ =\ \{}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P0,}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P1,}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P2,}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P3,}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P4,}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P5,}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ REG\_TX\_ADDR}
-\DoxyCodeLine{00053\ \};}
-\DoxyCodeLine{00054\ \textcolor{comment}{//5.\ RX\_PW\_Px\ registers\ addresses}}
-\DoxyCodeLine{00055\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ RF24\_RX\_PW\_PIPE[6]\ =\ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P0,\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P1,}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P2,}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P3,}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P4,}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P5}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal.h"{}}\ \ \ \textcolor{comment}{//**\ Change\ this\ according\ to\ your\ STM32\ series\ **//}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{n_r_f24_l01_8h}{nRF24L01.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//1.\ Pinout\ Ports\ and\ Pin}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\#define\ nrf\_CSN\_PORT\ \ \ \ \ \ GPIOD}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\#define\ nrf\_CSN\_PIN\ \ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_0}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\#define\ nrf\_CE\_PORT\ \ \ \ \ \ \ \ \ \ \ GPIOD}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\#define\ nrf\_CE\_PIN\ \ \ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_1}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//****\ TypeDefs\ ****//}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//1.\ Power\ Amplifier\ function,\ NRF24\_setPALevel()\ }}
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ }
+\DoxyCodeLine{00035\ \ \ \ \ RF24\_PA\_m18dB\ =\ 0,}
+\DoxyCodeLine{00036\ \ \ \ \ RF24\_PA\_m12dB,}
+\DoxyCodeLine{00037\ \ \ \ \ RF24\_PA\_m6dB,}
+\DoxyCodeLine{00038\ \ \ \ \ RF24\_PA\_0dB,}
+\DoxyCodeLine{00039\ \ \ \ \ RF24\_PA\_ERROR\ }
+\DoxyCodeLine{00040\ \}rf24\_pa\_dbm\_e\ ;}
+\DoxyCodeLine{00041\ \textcolor{comment}{//2.\ NRF24\_setDataRate()\ input}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ }
+\DoxyCodeLine{00043\ \ \ \ \ RF24\_1MBPS\ =\ 0,}
+\DoxyCodeLine{00044\ \ \ \ \ RF24\_2MBPS,}
+\DoxyCodeLine{00045\ \ \ \ \ RF24\_250KBPS}
+\DoxyCodeLine{00046\ \}rf24\_datarate\_e;}
+\DoxyCodeLine{00047\ \textcolor{comment}{//3.\ NRF24\_setCRCLength()\ input}}
+\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ }
+\DoxyCodeLine{00049\ \ \ \ \ RF24\_CRC\_DISABLED\ =\ 0,}
+\DoxyCodeLine{00050\ \ \ \ \ RF24\_CRC\_8,}
+\DoxyCodeLine{00051\ \ \ \ \ RF24\_CRC\_16}
+\DoxyCodeLine{00052\ \}rf24\_crclength\_e;}
+\DoxyCodeLine{00053\ \textcolor{comment}{//4.\ Pipe\ address\ registers}}
+\DoxyCodeLine{00054\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ NRF24\_ADDR\_REGS[7]\ =\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P0,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P1,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P2,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P3,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P4,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ REG\_RX\_ADDR\_P5,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ REG\_TX\_ADDR}
 \DoxyCodeLine{00062\ \};}
-\DoxyCodeLine{00063\ \textcolor{comment}{//****\ Functions\ prototypes\ ****//}}
-\DoxyCodeLine{00064\ \textcolor{comment}{//Microsecond\ delay\ function}}
-\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ NRF24\_DelayMicroSeconds(uint32\_t\ uSec);}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \textcolor{comment}{//1.\ Chip\ Select\ function}}
-\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ NRF24\_csn(\textcolor{keywordtype}{int}\ mode);}
-\DoxyCodeLine{00069\ \textcolor{comment}{//2.\ Chip\ Enable}}
-\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ NRF24\_ce(\textcolor{keywordtype}{int}\ level);}
-\DoxyCodeLine{00071\ \textcolor{comment}{//3.\ Read\ single\ byte\ from\ a\ register}}
-\DoxyCodeLine{00072\ uint8\_t\ NRF24\_read\_register(uint8\_t\ reg);}
-\DoxyCodeLine{00073\ \textcolor{comment}{//4.\ Read\ multiple\ bytes\ register}}
-\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ NRF24\_read\_registerN(uint8\_t\ reg,\ uint8\_t\ *buf,\ uint8\_t\ len);}
-\DoxyCodeLine{00075\ \textcolor{comment}{//5.\ Write\ single\ byte\ register}}
-\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ NRF24\_write\_register(uint8\_t\ reg,\ uint8\_t\ value);}
-\DoxyCodeLine{00077\ \textcolor{comment}{//6.\ Write\ multipl\ bytes\ register}}
-\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ NRF24\_write\_registerN(uint8\_t\ reg,\ \textcolor{keyword}{const}\ uint8\_t*\ buf,\ uint8\_t\ len);}
-\DoxyCodeLine{00079\ \textcolor{comment}{//7.\ Write\ transmit\ payload}}
-\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ NRF24\_write\_payload(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len);}
-\DoxyCodeLine{00081\ \textcolor{comment}{//8.\ Read\ receive\ payload}}
-\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ NRF24\_read\_payload(\textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len);}
-\DoxyCodeLine{00083\ \textcolor{comment}{//9.\ Flush\ Tx\ buffer}}
-\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ NRF24\_flush\_tx(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00085\ \textcolor{comment}{//10.\ Flush\ Rx\ buffer}}
-\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ NRF24\_flush\_rx(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00087\ \textcolor{comment}{//11.\ Get\ status\ register\ value}}
-\DoxyCodeLine{00088\ uint8\_t\ NRF24\_get\_status(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{comment}{//12.\ Begin\ function}}
-\DoxyCodeLine{00099\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_begin(GPIO\_TypeDef\ *nrf24PORT,\ uint16\_t\ nrfCSN\_Pin,\ uint16\_t\ nrfCE\_Pin,\ SPI\_HandleTypeDef\ nrfSPI);}
-\DoxyCodeLine{00100\ \textcolor{comment}{//13.\ Listen\ on\ open\ pipes\ for\ reading\ (Must\ call\ NRF24\_openReadingPipe()\ first)}}
-\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ NRF24\_startListening(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00102\ \textcolor{comment}{//14.\ Stop\ listening\ (essential\ before\ any\ write\ operation)}}
-\DoxyCodeLine{00107\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_stopListening(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \textcolor{comment}{//15.\ Write(Transmit\ data),\ returns\ true\ if\ successfully\ sent}}
-\DoxyCodeLine{00118\ \textcolor{comment}{}\textcolor{keywordtype}{bool}\ NRF24\_write(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len\ );}
-\DoxyCodeLine{00119\ \textcolor{comment}{//16.\ Check\ for\ available\ data\ to\ read}}
-\DoxyCodeLine{00120\ \textcolor{keywordtype}{bool}\ NRF24\_available(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00121\ \textcolor{comment}{//17.\ Read\ received\ data}}
-\DoxyCodeLine{00130\ \textcolor{comment}{}\textcolor{keywordtype}{bool}\ NRF24\_read(\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len\ );}
-\DoxyCodeLine{00131\ \textcolor{comment}{//18.\ Open\ Tx\ pipe\ for\ writing\ (Cannot\ perform\ this\ while\ Listenning,\ has\ to\ call\ NRF24\_stopListening)}}
-\DoxyCodeLine{00138\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_openWritingPipe(uint64\_t\ address);}
-\DoxyCodeLine{00139\ \textcolor{comment}{//19.\ Open\ reading\ pipe}}
-\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ NRF24\_openReadingPipe(uint8\_t\ number,\ uint64\_t\ address);}
-\DoxyCodeLine{00141\ \textcolor{comment}{//20\ set\ transmit\ retries\ (rf24\_Retries\_e)\ and\ delay}}
-\DoxyCodeLine{00142\ \textcolor{keywordtype}{void}\ NRF24\_setRetries(uint8\_t\ delay,\ uint8\_t\ count);}
-\DoxyCodeLine{00143\ \textcolor{comment}{//21.\ Set\ RF\ channel\ frequency}}
-\DoxyCodeLine{00149\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_setChannel(uint8\_t\ channel);}
-\DoxyCodeLine{00150\ \textcolor{comment}{//22.\ Set\ payload\ size}}
-\DoxyCodeLine{00156\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_setPayloadSize(uint8\_t\ size);}
-\DoxyCodeLine{00157\ \textcolor{comment}{//23.\ Get\ payload\ size}}
-\DoxyCodeLine{00158\ uint8\_t\ NRF24\_getPayloadSize(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00159\ \textcolor{comment}{//24.\ Get\ dynamic\ payload\ size,\ of\ latest\ packet\ received}}
-\DoxyCodeLine{00160\ uint8\_t\ NRF24\_getDynamicPayloadSize(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00161\ \textcolor{comment}{//25.\ Enable\ payload\ on\ Ackknowledge\ packet}}
-\DoxyCodeLine{00166\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_enableAckPayload(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00167\ \textcolor{comment}{//26.\ Enable\ dynamic\ payloads}}
-\DoxyCodeLine{00172\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_enableDynamicPayloads(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00173\ \textcolor{keywordtype}{void}\ NRF24\_disableDynamicPayloads(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00174\ \textcolor{comment}{//27.\ Check\ if\ module\ is\ NRF24L01+\ or\ normal\ module}}
-\DoxyCodeLine{00175\ \textcolor{keywordtype}{bool}\ NRF24\_isNRF\_Plus(\textcolor{keywordtype}{void})\ ;}
-\DoxyCodeLine{00176\ \textcolor{comment}{//28.\ Set\ Auto\ Ack\ for\ all}}
-\DoxyCodeLine{00182\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_setAutoAck(\textcolor{keywordtype}{bool}\ enable);}
-\DoxyCodeLine{00183\ \textcolor{comment}{//29.\ Set\ Auto\ Ack\ for\ certain\ pipe}}
-\DoxyCodeLine{00184\ \textcolor{keywordtype}{void}\ NRF24\_setAutoAckPipe(\ uint8\_t\ pipe,\ \textcolor{keywordtype}{bool}\ enable\ )\ ;}
-\DoxyCodeLine{00185\ \textcolor{comment}{//30.\ Set\ transmit\ power\ level}}
-\DoxyCodeLine{00186\ \textcolor{keywordtype}{void}\ NRF24\_setPALevel(\ rf24\_pa\_dbm\_e\ level\ )\ ;}
-\DoxyCodeLine{00187\ \textcolor{comment}{//31.\ Get\ transmit\ power\ level}}
-\DoxyCodeLine{00188\ rf24\_pa\_dbm\_e\ NRF24\_getPALevel(\ \textcolor{keywordtype}{void}\ )\ ;}
-\DoxyCodeLine{00189\ \textcolor{comment}{//32.\ Set\ data\ rate\ (250\ Kbps,\ 1Mbps,\ 2Mbps)}}
-\DoxyCodeLine{00190\ \textcolor{keywordtype}{bool}\ NRF24\_setDataRate(rf24\_datarate\_e\ speed);}
-\DoxyCodeLine{00191\ \textcolor{comment}{//33.\ Get\ data\ rate}}
-\DoxyCodeLine{00192\ rf24\_datarate\_e\ NRF24\_getDataRate(\ \textcolor{keywordtype}{void}\ );}
-\DoxyCodeLine{00193\ \textcolor{comment}{//34.\ Set\ crc\ length\ (disable,\ 8-\/bits\ or\ 16-\/bits)}}
-\DoxyCodeLine{00194\ \textcolor{keywordtype}{void}\ NRF24\_setCRCLength(rf24\_crclength\_e\ length);}
-\DoxyCodeLine{00195\ \textcolor{comment}{//35.\ Get\ CRC\ length}}
-\DoxyCodeLine{00196\ rf24\_crclength\_e\ NRF24\_getCRCLength(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00197\ \textcolor{comment}{//36.\ Disable\ CRC}}
-\DoxyCodeLine{00198\ \textcolor{keywordtype}{void}\ NRF24\_disableCRC(\ \textcolor{keywordtype}{void}\ )\ ;}
-\DoxyCodeLine{00199\ \textcolor{comment}{//37.\ power\ up}}
-\DoxyCodeLine{00200\ \textcolor{keywordtype}{void}\ NRF24\_powerUp(\textcolor{keywordtype}{void})\ ;}
-\DoxyCodeLine{00201\ \textcolor{comment}{//38.\ power\ down}}
-\DoxyCodeLine{00202\ \textcolor{keywordtype}{void}\ NRF24\_powerDown(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00203\ \textcolor{comment}{//39.\ Check\ if\ data\ are\ available\ and\ on\ which\ pipe\ (Use\ this\ for\ multiple\ rx\ pipes)}}
-\DoxyCodeLine{00204\ \textcolor{keywordtype}{bool}\ NRF24\_availablePipe(uint8\_t*\ pipe\_num);}
-\DoxyCodeLine{00205\ \textcolor{comment}{//40.\ Start\ write\ (for\ IRQ\ mode)}}
-\DoxyCodeLine{00206\ \textcolor{keywordtype}{void}\ NRF24\_startWrite(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len\ );}
-\DoxyCodeLine{00207\ \textcolor{comment}{//41.\ Write\ acknowledge\ payload}}
-\DoxyCodeLine{00208\ \textcolor{keywordtype}{void}\ NRF24\_writeAckPayload(uint8\_t\ pipe,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len);}
-\DoxyCodeLine{00209\ \textcolor{comment}{//42.\ Check\ if\ an\ Ack\ payload\ is\ available}}
-\DoxyCodeLine{00210\ \textcolor{keywordtype}{bool}\ NRF24\_isAckPayloadAvailable(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00211\ \textcolor{comment}{//43.\ Check\ interrupt\ flags}}
-\DoxyCodeLine{00212\ \textcolor{keywordtype}{void}\ NRF24\_whatHappened(\textcolor{keywordtype}{bool}\ *tx\_ok,\textcolor{keywordtype}{bool}\ *tx\_fail,\textcolor{keywordtype}{bool}\ *rx\_ready);}
-\DoxyCodeLine{00213\ \textcolor{comment}{//44.\ Test\ if\ there\ is\ a\ carrier\ on\ the\ previous\ listenning\ period\ (useful\ to\ check\ for\ intereference)}}
-\DoxyCodeLine{00214\ \textcolor{keywordtype}{bool}\ NRF24\_testCarrier(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00215\ \textcolor{comment}{//45.\ Test\ if\ a\ signal\ carrier\ exists\ (=>\ -\/64dB),\ only\ for\ NRF24L01+}}
-\DoxyCodeLine{00216\ \textcolor{keywordtype}{bool}\ NRF24\_testRPD(\textcolor{keywordtype}{void})\ ;}
-\DoxyCodeLine{00217\ \textcolor{comment}{//46.\ Reset\ Status}}
-\DoxyCodeLine{00218\ \textcolor{keywordtype}{void}\ NRF24\_resetStatus(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00219\ \textcolor{comment}{//47.\ ACTIVATE\ cmd}}
-\DoxyCodeLine{00220\ \textcolor{keywordtype}{void}\ NRF24\_ACTIVATE\_cmd(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00221\ \textcolor{comment}{//48.\ Get\ AckPayload\ Size}}
-\DoxyCodeLine{00222\ uint8\_t\ NRF24\_GetAckPayloadSize(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00224\ \textcolor{comment}{//**********\ \ DEBUG\ Functions\ **********//}}
-\DoxyCodeLine{00225\ \textcolor{comment}{//1.\ Print\ radio\ settings}}
-\DoxyCodeLine{00231\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ printRadioSettings(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00232\ \textcolor{comment}{//2.\ Print\ Status\ }}
-\DoxyCodeLine{00233\ \textcolor{keywordtype}{void}\ printStatusReg(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00234\ \textcolor{comment}{//3.\ Print\ Config\ }}
-\DoxyCodeLine{00235\ \textcolor{keywordtype}{void}\ printConfigReg(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00236\ \textcolor{comment}{//4.\ Init\ Variables}}
-\DoxyCodeLine{00243\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ nrf24\_DebugUART\_Init(UART\_HandleTypeDef\ nrf24Uart);}
-\DoxyCodeLine{00244\ \textcolor{comment}{//5.\ FIFO\ Status}}
-\DoxyCodeLine{00245\ \textcolor{keywordtype}{void}\ printFIFOstatus(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00246\ }
-\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00063\ \textcolor{comment}{//5.\ RX\_PW\_Px\ registers\ addresses}}
+\DoxyCodeLine{00064\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ RF24\_RX\_PW\_PIPE[6]\ =\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P0,\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P1,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P2,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P3,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P4,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ REG\_RX\_PW\_P5}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ \textcolor{comment}{//****\ Functions\ prototypes\ ****//}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//Microsecond\ delay\ function}}
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ NRF24\_DelayMicroSeconds(uint32\_t\ uSec);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{comment}{//1.\ Chip\ Select\ function}}
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ NRF24\_csn(\textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{00078\ \textcolor{comment}{//2.\ Chip\ Enable}}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ NRF24\_ce(\textcolor{keywordtype}{int}\ level);}
+\DoxyCodeLine{00080\ \textcolor{comment}{//3.\ Read\ single\ byte\ from\ a\ register}}
+\DoxyCodeLine{00081\ uint8\_t\ NRF24\_read\_register(uint8\_t\ reg);}
+\DoxyCodeLine{00082\ \textcolor{comment}{//4.\ Read\ multiple\ bytes\ register}}
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ NRF24\_read\_registerN(uint8\_t\ reg,\ uint8\_t\ *buf,\ uint8\_t\ len);}
+\DoxyCodeLine{00084\ \textcolor{comment}{//5.\ Write\ single\ byte\ register}}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ NRF24\_write\_register(uint8\_t\ reg,\ uint8\_t\ value);}
+\DoxyCodeLine{00086\ \textcolor{comment}{//6.\ Write\ multipl\ bytes\ register}}
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ NRF24\_write\_registerN(uint8\_t\ reg,\ \textcolor{keyword}{const}\ uint8\_t*\ buf,\ uint8\_t\ len);}
+\DoxyCodeLine{00088\ \textcolor{comment}{//7.\ Write\ transmit\ payload}}
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ NRF24\_write\_payload(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len);}
+\DoxyCodeLine{00090\ \textcolor{comment}{//8.\ Read\ receive\ payload}}
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ NRF24\_read\_payload(\textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len);}
+\DoxyCodeLine{00092\ \textcolor{comment}{//9.\ Flush\ Tx\ buffer}}
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ NRF24\_flush\_tx(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00094\ \textcolor{comment}{//10.\ Flush\ Rx\ buffer}}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ NRF24\_flush\_rx(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00096\ \textcolor{comment}{//11.\ Get\ status\ register\ value}}
+\DoxyCodeLine{00097\ uint8\_t\ NRF24\_get\_status(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{//12.\ Begin\ function}}
+\DoxyCodeLine{00108\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_begin(GPIO\_TypeDef\ *nrf24PORT,\ uint16\_t\ nrfCSN\_Pin,\ uint16\_t\ nrfCE\_Pin,\ SPI\_HandleTypeDef\ nrfSPI);}
+\DoxyCodeLine{00109\ \textcolor{comment}{//13.\ Listen\ on\ open\ pipes\ for\ reading\ (Must\ call\ NRF24\_openReadingPipe()\ first)}}
+\DoxyCodeLine{00114\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_startListening(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00115\ \textcolor{comment}{//14.\ Stop\ listening\ (essential\ before\ any\ write\ operation)}}
+\DoxyCodeLine{00120\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_stopListening(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{comment}{//15.\ Write(Transmit\ data),\ returns\ true\ if\ successfully\ sent}}
+\DoxyCodeLine{00131\ \textcolor{comment}{}\textcolor{keywordtype}{bool}\ NRF24\_write(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len\ );}
+\DoxyCodeLine{00132\ \textcolor{comment}{//16.\ Check\ for\ available\ data\ to\ read}}
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{bool}\ NRF24\_available(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00134\ \textcolor{comment}{//17.\ Read\ received\ data}}
+\DoxyCodeLine{00143\ \textcolor{comment}{}\textcolor{keywordtype}{bool}\ NRF24\_read(\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len\ );}
+\DoxyCodeLine{00144\ \textcolor{comment}{//18.\ Open\ Tx\ pipe\ for\ writing\ (Cannot\ perform\ this\ while\ Listenning,\ has\ to\ call\ NRF24\_stopListening)}}
+\DoxyCodeLine{00151\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_openWritingPipe(uint64\_t\ address);}
+\DoxyCodeLine{00152\ \textcolor{comment}{//19.\ Open\ reading\ pipe}}
+\DoxyCodeLine{00159\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_openReadingPipe(uint8\_t\ number,\ uint64\_t\ address);}
+\DoxyCodeLine{00160\ \textcolor{comment}{//20\ set\ transmit\ retries\ (rf24\_Retries\_e)\ and\ delay}}
+\DoxyCodeLine{00161\ \textcolor{keywordtype}{void}\ NRF24\_setRetries(uint8\_t\ delay,\ uint8\_t\ count);}
+\DoxyCodeLine{00162\ \textcolor{comment}{//21.\ Set\ RF\ channel\ frequency}}
+\DoxyCodeLine{00168\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_setChannel(uint8\_t\ channel);}
+\DoxyCodeLine{00169\ \textcolor{comment}{//22.\ Set\ payload\ size}}
+\DoxyCodeLine{00175\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_setPayloadSize(uint8\_t\ size);}
+\DoxyCodeLine{00176\ \textcolor{comment}{//23.\ Get\ payload\ size}}
+\DoxyCodeLine{00177\ uint8\_t\ NRF24\_getPayloadSize(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00178\ \textcolor{comment}{//24.\ Get\ dynamic\ payload\ size,\ of\ latest\ packet\ received}}
+\DoxyCodeLine{00179\ uint8\_t\ NRF24\_getDynamicPayloadSize(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00180\ \textcolor{comment}{//25.\ Enable\ payload\ on\ Ackknowledge\ packet}}
+\DoxyCodeLine{00185\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_enableAckPayload(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00186\ \textcolor{comment}{//26.\ Enable\ dynamic\ payloads}}
+\DoxyCodeLine{00191\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_enableDynamicPayloads(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00192\ \textcolor{keywordtype}{void}\ NRF24\_disableDynamicPayloads(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00193\ \textcolor{comment}{//27.\ Check\ if\ module\ is\ NRF24L01+\ or\ normal\ module}}
+\DoxyCodeLine{00194\ \textcolor{keywordtype}{bool}\ NRF24\_isNRF\_Plus(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00195\ \textcolor{comment}{//28.\ Set\ Auto\ Ack\ for\ all}}
+\DoxyCodeLine{00201\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ NRF24\_setAutoAck(\textcolor{keywordtype}{bool}\ enable);}
+\DoxyCodeLine{00202\ \textcolor{comment}{//29.\ Set\ Auto\ Ack\ for\ certain\ pipe}}
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{void}\ NRF24\_setAutoAckPipe(\ uint8\_t\ pipe,\ \textcolor{keywordtype}{bool}\ enable\ )\ ;}
+\DoxyCodeLine{00204\ \textcolor{comment}{//30.\ Set\ transmit\ power\ level}}
+\DoxyCodeLine{00205\ \textcolor{keywordtype}{void}\ NRF24\_setPALevel(\ rf24\_pa\_dbm\_e\ level\ )\ ;}
+\DoxyCodeLine{00206\ \textcolor{comment}{//31.\ Get\ transmit\ power\ level}}
+\DoxyCodeLine{00207\ rf24\_pa\_dbm\_e\ NRF24\_getPALevel(\ \textcolor{keywordtype}{void}\ )\ ;}
+\DoxyCodeLine{00208\ \textcolor{comment}{//32.\ Set\ data\ rate\ (250\ Kbps,\ 1Mbps,\ 2Mbps)}}
+\DoxyCodeLine{00209\ \textcolor{keywordtype}{bool}\ NRF24\_setDataRate(rf24\_datarate\_e\ speed);}
+\DoxyCodeLine{00210\ \textcolor{comment}{//33.\ Get\ data\ rate}}
+\DoxyCodeLine{00211\ rf24\_datarate\_e\ NRF24\_getDataRate(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{00212\ \textcolor{comment}{//34.\ Set\ crc\ length\ (disable,\ 8-\/bits\ or\ 16-\/bits)}}
+\DoxyCodeLine{00213\ \textcolor{keywordtype}{void}\ NRF24\_setCRCLength(rf24\_crclength\_e\ length);}
+\DoxyCodeLine{00214\ \textcolor{comment}{//35.\ Get\ CRC\ length}}
+\DoxyCodeLine{00215\ rf24\_crclength\_e\ NRF24\_getCRCLength(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00216\ \textcolor{comment}{//36.\ Disable\ CRC}}
+\DoxyCodeLine{00217\ \textcolor{keywordtype}{void}\ NRF24\_disableCRC(\ \textcolor{keywordtype}{void}\ )\ ;}
+\DoxyCodeLine{00218\ \textcolor{comment}{//37.\ power\ up}}
+\DoxyCodeLine{00219\ \textcolor{keywordtype}{void}\ NRF24\_powerUp(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00220\ \textcolor{comment}{//38.\ power\ down}}
+\DoxyCodeLine{00221\ \textcolor{keywordtype}{void}\ NRF24\_powerDown(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00222\ \textcolor{comment}{//39.\ Check\ if\ data\ are\ available\ and\ on\ which\ pipe\ (Use\ this\ for\ multiple\ rx\ pipes)}}
+\DoxyCodeLine{00223\ \textcolor{keywordtype}{bool}\ NRF24\_availablePipe(uint8\_t*\ pipe\_num);}
+\DoxyCodeLine{00224\ \textcolor{comment}{//40.\ Start\ write\ (for\ IRQ\ mode)}}
+\DoxyCodeLine{00225\ \textcolor{keywordtype}{void}\ NRF24\_startWrite(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len\ );}
+\DoxyCodeLine{00226\ \textcolor{comment}{//41.\ Write\ acknowledge\ payload}}
+\DoxyCodeLine{00227\ \textcolor{keywordtype}{void}\ NRF24\_writeAckPayload(uint8\_t\ pipe,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ buf,\ uint8\_t\ len);}
+\DoxyCodeLine{00228\ \textcolor{comment}{//42.\ Check\ if\ an\ Ack\ payload\ is\ available}}
+\DoxyCodeLine{00229\ \textcolor{keywordtype}{bool}\ NRF24\_isAckPayloadAvailable(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00230\ \textcolor{comment}{//43.\ Check\ interrupt\ flags}}
+\DoxyCodeLine{00231\ \textcolor{keywordtype}{void}\ NRF24\_whatHappened(\textcolor{keywordtype}{bool}\ *tx\_ok,\textcolor{keywordtype}{bool}\ *tx\_fail,\textcolor{keywordtype}{bool}\ *rx\_ready);}
+\DoxyCodeLine{00232\ \textcolor{comment}{//44.\ Test\ if\ there\ is\ a\ carrier\ on\ the\ previous\ listenning\ period\ (useful\ to\ check\ for\ intereference)}}
+\DoxyCodeLine{00233\ \textcolor{keywordtype}{bool}\ NRF24\_testCarrier(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00234\ \textcolor{comment}{//45.\ Test\ if\ a\ signal\ carrier\ exists\ (=>\ -\/64dB),\ only\ for\ NRF24L01+}}
+\DoxyCodeLine{00235\ \textcolor{keywordtype}{bool}\ NRF24\_testRPD(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00236\ \textcolor{comment}{//46.\ Reset\ Status}}
+\DoxyCodeLine{00237\ \textcolor{keywordtype}{void}\ NRF24\_resetStatus(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00238\ \textcolor{comment}{//47.\ ACTIVATE\ cmd}}
+\DoxyCodeLine{00239\ \textcolor{keywordtype}{void}\ NRF24\_ACTIVATE\_cmd(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00240\ \textcolor{comment}{//48.\ Get\ AckPayload\ Size}}
+\DoxyCodeLine{00241\ uint8\_t\ NRF24\_GetAckPayloadSize(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{comment}{//**********\ \ DEBUG\ Functions\ **********//}}
+\DoxyCodeLine{00244\ \textcolor{comment}{//1.\ Print\ radio\ settings}}
+\DoxyCodeLine{00250\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ printRadioSettings(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00251\ \textcolor{comment}{//2.\ Print\ Status\ }}
+\DoxyCodeLine{00252\ \textcolor{keywordtype}{void}\ printStatusReg(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00253\ \textcolor{comment}{//3.\ Print\ Config\ }}
+\DoxyCodeLine{00254\ \textcolor{keywordtype}{void}\ printConfigReg(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00255\ \textcolor{comment}{//4.\ Init\ Variables}}
+\DoxyCodeLine{00262\ \textcolor{comment}{}\textcolor{keywordtype}{void}\ nrf24\_DebugUART\_Init(UART\_HandleTypeDef\ nrf24Uart);}
+\DoxyCodeLine{00263\ \textcolor{comment}{//5.\ FIFO\ Status}}
+\DoxyCodeLine{00264\ \textcolor{keywordtype}{void}\ printFIFOstatus(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ }
 
 \end{DoxyCode}
