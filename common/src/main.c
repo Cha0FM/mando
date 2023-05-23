@@ -22,8 +22,10 @@
 #include <stdio.h>
 #include "MY_NRF24.h" //Hal driver del NRF
 #include "fsm_adc.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -69,6 +71,7 @@ uint64_t TxpipeAddrs = 0x11223344AA;
 uint32_t myTxData[2]; //variable de envio
 bool AckPayload[1]; //ACK
 uint32_t adcVal;
+GPIO_PinState boton;
 /* USER CODE END 0 */
 
 /**
@@ -112,13 +115,16 @@ fsm_t * p_adc = fsm_adc_new(TIEMPO_ADC_MS);
  
   while (1)
   {
-  fsm_fire(p_adc);
     
-  HAL_Delay(1); //Periodo del bucle principal
+
+   fsm_fire(p_adc);
+    
+  //HAL_Delay(1); //Periodo del bucle principal
   }
   fsm_destroy(p_adc);
 
 }
+
 
 /**
   * @brief System Clock Configuration
@@ -312,6 +318,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : CSNpin_Pin CEpin_Pin */
   GPIO_InitStruct.Pin = CSNpin_Pin|CEpin_Pin;

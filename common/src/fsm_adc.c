@@ -3,6 +3,7 @@
 #include "fsm_adc.h"
 #include "stm32f4xx_hal.h" 
 #include "stm32f4xx_hal_adc.h"
+#include "stm32f4xx_hal_gpio.h"
 #include <stdio.h>
 #include "main.h"
 #include "MY_NRF24.h" //Hal driver del NRF
@@ -13,7 +14,7 @@ typedef struct
     uint32_t adcVal;        /*!< Valor del Potenciometro ADC de 0-255 */
     bool ack[1];               /*!< AcK de vuelta */
     uint32_t timeAdc;      /*!< Duracion entre cada muestra del ADC*/
-    uint32_t myTxData[2]; /*!< Buffer de transmision*/
+    uint32_t myTxData[32]; /*!< Buffer de transmision*/
 } fsm_adc_t;
 
 /**
@@ -26,8 +27,15 @@ void do_read_transmit_adc(fsm_t *p_fsm)
  fsm_adc_t * p_adc = ( fsm_adc_t *) p_fsm ;
     HAL_ADC_Start(&hadc1);
     p_adc -> myTxData[0] = HAL_ADC_GetValue(&hadc1);
-
-    if(NRF24_write(p_adc -> myTxData, 2))
+    boton = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1);
+    if(boton == GPIO_PIN_SET)
+    {
+     p_adc -> myTxData[1]= (uint32_t)0;
+    }
+    else{
+      p_adc -> myTxData[1]= (uint32_t)1;
+    }
+    if(NRF24_write(p_adc -> myTxData , 32))
     {
         NRF24_read(p_adc -> ack, 1);
     }
@@ -106,6 +114,6 @@ void fsm_adc_init(fsm_t *p_fsm, uint32_t timeAdc)
  p_adc -> adcVal = 0;
  p_adc -> ack[0] = false;
  p_adc -> timeAdc = timeAdc;
- p_adc -> myTxData[0] = 0;
- p_adc -> myTxData[1] = 0;
+ p_adc -> myTxData[0] = (uint32_t)0;
+ p_adc -> myTxData[1] = (uint32_t)0;
 }

@@ -18,6 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stm32f4xx_hal.h" 
+#include <stdio.h>
+#include "MY_NRF24.h" //Hal driver del NRF
+#include "fsm_adc.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -31,6 +35,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define TIEMPO_ADC_MS 2
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -61,7 +66,11 @@ static void MX_ADC1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint64_t TxpipeAddrs = 0x11223344AA;
+//Variables de transmisión
+uint32_t myTxData[2]; //variable de envio
+bool AckPayload[1]; //ACK
+uint32_t adcVal;
 /* USER CODE END 0 */
 
 /**
@@ -69,45 +78,47 @@ static void MX_ADC1_Init(void);
   * @retval int
   */
 int main(void)
-{
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
+  /* Configure the system clock - Nota: el nuestro esta a 16 MHZ */ 
   SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_SPI1_Init();
-  MX_USART2_UART_Init();
+  /* Initialize all configured peripherals */ 
+ 
+  MX_GPIO_Init(); //GPIO para el botón
+  MX_SPI1_Init(); //SPI para el NRFL
+  MX_USART2_UART_Init();//UART para depuración 
   MX_ADC1_Init();
-  /* USER CODE BEGIN 2 */
 
-  /* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+NRF24_begin(CEpin_GPIO_Port,CSNpin_Pin,GPIO_PIN_9,hspi1);
+nrf24_DebugUART_Init(huart2);
+
+printRadioSettings(); //Resetea y printea los ajustes
+
+// ******* SETUP DE TRANSMISIÓN CON ACK *****//
+NRF24_stopListening();
+NRF24_openWritingPipe(TxpipeAddrs);
+NRF24_setAutoAck(true);//para enviar con ACK
+NRF24_setChannel(52);//elegimos el canal
+NRF24_setPayloadSize(32);//tamaño de la payload 
+
+NRF24_enableDynamicPayloads();
+NRF24_enableAckPayload();
+
+
+fsm_t * p_adc = fsm_adc_new(TIEMPO_ADC_MS);
+ 
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+  fsm_fire(p_adc);
+    
+  HAL_Delay(10); //Periodo del bucle principal
   }
-  /* USER CODE END 3 */
+  fsm_destroy(p_adc);
+
 }
 
 /**
@@ -302,6 +313,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : CSNpin_Pin CEpin_Pin */
   GPIO_InitStruct.Pin = CSNpin_Pin|CEpin_Pin;
