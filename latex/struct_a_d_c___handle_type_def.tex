@@ -1,0 +1,81 @@
+\doxysection{Referencia de la estructura ADC\+\_\+\+Handle\+Type\+Def}
+\hypertarget{struct_a_d_c___handle_type_def}{}\label{struct_a_d_c___handle_type_def}\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+
+
+ADC handle Structure definition.  
+
+
+
+
+{\ttfamily \#include $<$stm32f4xx\+\_\+hal\+\_\+adc.\+h$>$}
+
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+ADC\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_a_d_c___handle_type_def_a3d89e51782aec71f9cfdff63f943d785}{Instance}}
+\item 
+\mbox{\hyperlink{struct_a_d_c___init_type_def}{ADC\+\_\+\+Init\+Type\+Def}} \mbox{\hyperlink{struct_a_d_c___handle_type_def_a43986a9a8ff67bdb398c01db82fda605}{Init}}
+\item 
+\+\_\+\+\_\+\+IO uint32\+\_\+t \mbox{\hyperlink{struct_a_d_c___handle_type_def_a434bd009117470aa394a3043fa759dc8}{Nbr\+Of\+Current\+Conversion\+Rank}}
+\item 
+DMA\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_a_d_c___handle_type_def_a1983db16acacd5f0b2881e43010dcd72}{DMA\+\_\+\+Handle}}
+\item 
+HAL\+\_\+\+Lock\+Type\+Def \mbox{\hyperlink{struct_a_d_c___handle_type_def_a7ef248e63b28b67cd985bafaeffd68ba}{Lock}}
+\item 
+\+\_\+\+\_\+\+IO uint32\+\_\+t \mbox{\hyperlink{struct_a_d_c___handle_type_def_abd63d2ae2064ef230986a43ae48f3df8}{State}}
+\item 
+\+\_\+\+\_\+\+IO uint32\+\_\+t \mbox{\hyperlink{struct_a_d_c___handle_type_def_a576634bdfdae8c61203a232876d2ba72}{Error\+Code}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+ADC handle Structure definition. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{struct_a_d_c___handle_type_def_a1983db16acacd5f0b2881e43010dcd72}\label{struct_a_d_c___handle_type_def_a1983db16acacd5f0b2881e43010dcd72} 
+\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}!DMA\_Handle@{DMA\_Handle}}
+\index{DMA\_Handle@{DMA\_Handle}!ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{DMA\_Handle}{DMA\_Handle}}
+{\footnotesize\ttfamily DMA\+\_\+\+Handle\+Type\+Def\texorpdfstring{$\ast$}{*} ADC\+\_\+\+Handle\+Type\+Def\+::\+DMA\+\_\+\+Handle}
+
+Pointer DMA Handler \Hypertarget{struct_a_d_c___handle_type_def_a576634bdfdae8c61203a232876d2ba72}\label{struct_a_d_c___handle_type_def_a576634bdfdae8c61203a232876d2ba72} 
+\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}!ErrorCode@{ErrorCode}}
+\index{ErrorCode@{ErrorCode}!ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{ErrorCode}{ErrorCode}}
+{\footnotesize\ttfamily \+\_\+\+\_\+\+IO uint32\+\_\+t ADC\+\_\+\+Handle\+Type\+Def\+::\+Error\+Code}
+
+ADC Error code \Hypertarget{struct_a_d_c___handle_type_def_a43986a9a8ff67bdb398c01db82fda605}\label{struct_a_d_c___handle_type_def_a43986a9a8ff67bdb398c01db82fda605} 
+\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}!Init@{Init}}
+\index{Init@{Init}!ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{Init}{Init}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_a_d_c___init_type_def}{ADC\+\_\+\+Init\+Type\+Def}} ADC\+\_\+\+Handle\+Type\+Def\+::\+Init}
+
+ADC required parameters \Hypertarget{struct_a_d_c___handle_type_def_a3d89e51782aec71f9cfdff63f943d785}\label{struct_a_d_c___handle_type_def_a3d89e51782aec71f9cfdff63f943d785} 
+\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}!Instance@{Instance}}
+\index{Instance@{Instance}!ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily ADC\+\_\+\+Type\+Def\texorpdfstring{$\ast$}{*} ADC\+\_\+\+Handle\+Type\+Def\+::\+Instance}
+
+Register base address \Hypertarget{struct_a_d_c___handle_type_def_a7ef248e63b28b67cd985bafaeffd68ba}\label{struct_a_d_c___handle_type_def_a7ef248e63b28b67cd985bafaeffd68ba} 
+\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}!Lock@{Lock}}
+\index{Lock@{Lock}!ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{Lock}{Lock}}
+{\footnotesize\ttfamily HAL\+\_\+\+Lock\+Type\+Def ADC\+\_\+\+Handle\+Type\+Def\+::\+Lock}
+
+ADC locking object \Hypertarget{struct_a_d_c___handle_type_def_a434bd009117470aa394a3043fa759dc8}\label{struct_a_d_c___handle_type_def_a434bd009117470aa394a3043fa759dc8} 
+\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}!NbrOfCurrentConversionRank@{NbrOfCurrentConversionRank}}
+\index{NbrOfCurrentConversionRank@{NbrOfCurrentConversionRank}!ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{NbrOfCurrentConversionRank}{NbrOfCurrentConversionRank}}
+{\footnotesize\ttfamily \+\_\+\+\_\+\+IO uint32\+\_\+t ADC\+\_\+\+Handle\+Type\+Def\+::\+Nbr\+Of\+Current\+Conversion\+Rank}
+
+ADC number of current conversion rank \Hypertarget{struct_a_d_c___handle_type_def_abd63d2ae2064ef230986a43ae48f3df8}\label{struct_a_d_c___handle_type_def_abd63d2ae2064ef230986a43ae48f3df8} 
+\index{ADC\_HandleTypeDef@{ADC\_HandleTypeDef}!State@{State}}
+\index{State@{State}!ADC\_HandleTypeDef@{ADC\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily \+\_\+\+\_\+\+IO uint32\+\_\+t ADC\+\_\+\+Handle\+Type\+Def\+::\+State}
+
+ADC communication state 
+
+La documentación de esta estructura está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+port/nucleo\+\_\+stm32f446re/include/\mbox{\hyperlink{stm32f4xx__hal__adc_8h}{stm32f4xx\+\_\+hal\+\_\+adc.\+h}}\end{DoxyCompactItemize}

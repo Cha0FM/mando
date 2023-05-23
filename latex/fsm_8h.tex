@@ -1,0 +1,143 @@
+\doxysection{Referencia del archivo common/include/fsm.h}
+\hypertarget{fsm_8h}{}\label{fsm_8h}\index{common/include/fsm.h@{common/include/fsm.h}}
+
+
+Cabecera FSM dada por la asignatura.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfsm__trans__t}{fsm\+\_\+trans\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em transition of a Finite State Machine (FSM). \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em struct to define a Finite State Machine (FSM). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{fsm_8h_a034aa5c5e541bee4187d3bd2b2cab2a0}\label{fsm_8h_a034aa5c5e541bee4187d3bd2b2cab2a0} 
+typedef struct \mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} {\bfseries fsm\+\_\+t}
+\item 
+\Hypertarget{fsm_8h_a0b58a6e1c0707054a9f0df9379684083}\label{fsm_8h_a0b58a6e1c0707054a9f0df9379684083} 
+typedef bool(\texorpdfstring{$\ast$}{*} {\bfseries fsm\+\_\+input\+\_\+func\+\_\+t}) (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em alias for the input condition function of a Finite State Machine (FSM). \end{DoxyCompactList}\item 
+\Hypertarget{fsm_8h_ab9f0952fdbd6e84f1faa86547e1b42f5}\label{fsm_8h_ab9f0952fdbd6e84f1faa86547e1b42f5} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries fsm\+\_\+output\+\_\+func\+\_\+t}) (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em alias for the output modification function of a Finite State Machine (FSM). \end{DoxyCompactList}\item 
+\Hypertarget{fsm_8h_a97922fb44881e0422468792d115dd866}\label{fsm_8h_a97922fb44881e0422468792d115dd866} 
+typedef struct \mbox{\hyperlink{structfsm__trans__t}{fsm\+\_\+trans\+\_\+t}} {\bfseries fsm\+\_\+trans\+\_\+t}
+\begin{DoxyCompactList}\small\item\em transition of a Finite State Machine (FSM). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fsm_8h_a9b0d45e79c69edb09b4c7679a819f0bf}{fsm\+\_\+new}} (\mbox{\hyperlink{structfsm__trans__t}{fsm\+\_\+trans\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+tt)
+\begin{DoxyCompactList}\small\item\em allocates memory on the heap and returns a pointer to a new Finite State Machine (FSM). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm_8h_aee4d00cd2b36015dfbe8ab3eb02a7d7a}{fsm\+\_\+init}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm, \mbox{\hyperlink{structfsm__trans__t}{fsm\+\_\+trans\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+tt)
+\begin{DoxyCompactList}\small\item\em Configures the initial state of a provided Finite State Machine (FSM) according to its transition table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm_8h_ab9f849bd2d80e5efaa320ddb59b4b246}{fsm\+\_\+fire}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm)
+\begin{DoxyCompactList}\small\item\em it reads the transition table of a Finite State Machine (FSM) and, if any input condition is met, it moves to a new state and executes the corresponding output modification function \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm_8h_a42ab412fe7a2ac8efb84e813d638128c}{fsm\+\_\+destroy}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated in the heap for a given Finite State Machine (FSM). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Cabecera FSM dada por la asignatura. 
+
+\begin{DoxyAuthor}{Autor}
+Javier y Manuel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2023-\/05-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{fsm_8h_a42ab412fe7a2ac8efb84e813d638128c}\label{fsm_8h_a42ab412fe7a2ac8efb84e813d638128c} 
+\index{fsm.h@{fsm.h}!fsm\_destroy@{fsm\_destroy}}
+\index{fsm\_destroy@{fsm\_destroy}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{fsm\_destroy()}{fsm\_destroy()}}
+{\footnotesize\ttfamily void fsm\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated in the heap for a given Finite State Machine (FSM). 
+
+\begin{DoxyNote}{Nota}
+Once called this function, the FSM cannot be used again. 
+
+You only need to call this function if the FSM was created using fsm\+\_\+new.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & pointer to the FSM being destroyed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fsm_8h_ab9f849bd2d80e5efaa320ddb59b4b246}\label{fsm_8h_ab9f849bd2d80e5efaa320ddb59b4b246} 
+\index{fsm.h@{fsm.h}!fsm\_fire@{fsm\_fire}}
+\index{fsm\_fire@{fsm\_fire}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{fsm\_fire()}{fsm\_fire()}}
+{\footnotesize\ttfamily void fsm\+\_\+fire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm }\end{DoxyParamCaption})}
+
+
+
+it reads the transition table of a Finite State Machine (FSM) and, if any input condition is met, it moves to a new state and executes the corresponding output modification function 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & pointer to the FSM. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fsm_8h_aee4d00cd2b36015dfbe8ab3eb02a7d7a}\label{fsm_8h_aee4d00cd2b36015dfbe8ab3eb02a7d7a} 
+\index{fsm.h@{fsm.h}!fsm\_init@{fsm\_init}}
+\index{fsm\_init@{fsm\_init}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{fsm\_init()}{fsm\_init()}}
+{\footnotesize\ttfamily void fsm\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm,  }\item[{\mbox{\hyperlink{structfsm__trans__t}{fsm\+\_\+trans\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+tt }\end{DoxyParamCaption})}
+
+
+
+Configures the initial state of a provided Finite State Machine (FSM) according to its transition table. 
+
+\begin{DoxyNote}{Nota}
+the initial state of the FSM corresponds to the origin state of the first transition of the table 
+
+the table must end with a null transition \{-\/1, NULL, -\/1, NULL\}. This is how the library detects the end of the table.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & pointer to the FSM being initialized. \\
+\hline
+{\em p\+\_\+tt} & ppointer to the transition table associated to the FSM. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fsm_8h_a9b0d45e79c69edb09b4c7679a819f0bf}\label{fsm_8h_a9b0d45e79c69edb09b4c7679a819f0bf} 
+\index{fsm.h@{fsm.h}!fsm\_new@{fsm\_new}}
+\index{fsm\_new@{fsm\_new}!fsm.h@{fsm.h}}
+\doxysubsubsection{\texorpdfstring{fsm\_new()}{fsm\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*} fsm\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__trans__t}{fsm\+\_\+trans\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+tt }\end{DoxyParamCaption})}
+
+
+
+allocates memory on the heap and returns a pointer to a new Finite State Machine (FSM). 
+
+\begin{DoxyNote}{Nota}
+the initial state of the FSM corresponds to the origin state of the first transition of the table 
+
+the table must end with a null transition \{-\/1, NULL, -\/1, NULL\}. This is how the library detects the end of the table. 
+
+this function allocates memory in the heap. Once you are done with the FSM, you must call fsm\+\_\+destroy to free the memory.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+tt} & ppointer to the transition table associated to the FSM. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+fsm\+\_\+t\texorpdfstring{$\ast$}{*} pointer to the new FSM. 
+\end{DoxyReturn}

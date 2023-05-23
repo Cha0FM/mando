@@ -1,3 +1,13 @@
+/**
+ * @file fsm_adc.c
+ * @author Javier y Manuel
+ * @brief Maquina de estados del Mando-ADC
+ * @version 1.0
+ * @date 2023-05-23
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include <stddef.h>
 #include <stdlib.h>
 #include "fsm_adc.h"
@@ -6,8 +16,11 @@
 #include "stm32f4xx_hal_gpio.h"
 #include <stdio.h>
 #include "main.h"
-#include "MY_NRF24.h" //Hal driver del NRF
-
+#include "MY_NRF24.h" 
+/**
+ * @brief Estructura de la FSM del Mando-ADC
+ * 
+ */
 typedef struct
 {
     fsm_t fsm;              /*!< Internal FSM from the library */
@@ -18,15 +31,18 @@ typedef struct
 } fsm_adc_t;
 
 /**
- * @brief Lee el valor existente en el ADC y lo transmite, esperando ack
+ * @brief Lee el valor existente en el ADC y boton, y lo transmite, esperando ack
  * 
  * @param p_fsm Puntero a la FSM del ADC
  */
 void do_read_transmit_adc(fsm_t *p_fsm)
 {
  fsm_adc_t * p_adc = ( fsm_adc_t *) p_fsm ;
+    //ADC
     HAL_ADC_Start(&hadc1);
-    p_adc -> myTxData[0] = HAL_ADC_GetValue(&hadc1);
+    p_adc -> adcVal = HAL_ADC_GetValue(&hadc1);
+    p_adc -> myTxData[0] = p_adc -> adcVal;
+    //BOTON
     boton = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1);
     if(boton == GPIO_PIN_SET)
     {
@@ -35,8 +51,25 @@ void do_read_transmit_adc(fsm_t *p_fsm)
     else{
       p_adc -> myTxData[1]= (uint32_t)1;
     }
+    //TRANSMISION
+    /**
+ * @brief Escribimos/Transmitimos los datos a traves del transceptor
+ * 
+ * @param buf Buffer a enviar
+ * @param len Longitud del buffer
+ * @return true Si se ejecuta correctamente
+ * @return false Si no
+ */
     if(NRF24_write(p_adc -> myTxData , 32))
     {
+        /**
+ * @brief Leer los datos recibidos (ACK)
+ * 
+ * @param buf buffer de datos de entrada
+ * @param len longitud del buffer
+ * @return true 
+ * @return false 
+ */
         NRF24_read(p_adc -> ack, 1);
     }
 
@@ -56,7 +89,7 @@ return true;
 }
 
 /**
- * @brief Comprueba si ha recibido el ack de vuelta de parte del skate
+ * @brief Comprueba si ha recibido el ack true de vuelta de parte del skate
  * 
  * @param p_fsm Puntero a la FSM del ADC
  * @return true 

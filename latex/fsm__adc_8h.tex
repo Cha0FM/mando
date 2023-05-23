@@ -1,0 +1,72 @@
+\doxysection{Referencia del archivo common/include/fsm\+\_\+adc.h}
+\hypertarget{fsm__adc_8h}{}\label{fsm__adc_8h}\index{common/include/fsm\_adc.h@{common/include/fsm\_adc.h}}
+
+
+Cabecera de la FSM del Mando-\/\+ADC.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \"{}fsm.\+h\"{}}\newline
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fsm__adc_8h_a6021de1c4f27e45aa0232d78865670ff}{fsm\+\_\+adc\+\_\+new}} (uint32\+\_\+t time\+Adc)
+\begin{DoxyCompactList}\small\item\em Crea una nueva maquina de estados para leer correctamente el ADC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__adc_8h_a290d489dc75da32c46a49c520967db09}{fsm\+\_\+adc\+\_\+init}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm, uint32\+\_\+t time\+Adc)
+\begin{DoxyCompactList}\small\item\em Inicializa todos los parametros de la FSM para leer correctamente el ADC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Cabecera de la FSM del Mando-\/\+ADC. 
+
+\begin{DoxyAuthor}{Autor}
+Javier y Manuel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2023-\/05-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{fsm__adc_8h_a290d489dc75da32c46a49c520967db09}\label{fsm__adc_8h_a290d489dc75da32c46a49c520967db09} 
+\index{fsm\_adc.h@{fsm\_adc.h}!fsm\_adc\_init@{fsm\_adc\_init}}
+\index{fsm\_adc\_init@{fsm\_adc\_init}!fsm\_adc.h@{fsm\_adc.h}}
+\doxysubsubsection{\texorpdfstring{fsm\_adc\_init()}{fsm\_adc\_init()}}
+{\footnotesize\ttfamily void fsm\+\_\+adc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm,  }\item[{uint32\+\_\+t}]{time\+Adc }\end{DoxyParamCaption})}
+
+
+
+Inicializa todos los parametros de la FSM para leer correctamente el ADC. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & Puntero a la FSM del ADC \\
+\hline
+{\em time\+Adc} & Tiempo entre cada lectura/envio del ADC \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fsm__adc_8h_a6021de1c4f27e45aa0232d78865670ff}\label{fsm__adc_8h_a6021de1c4f27e45aa0232d78865670ff} 
+\index{fsm\_adc.h@{fsm\_adc.h}!fsm\_adc\_new@{fsm\_adc\_new}}
+\index{fsm\_adc\_new@{fsm\_adc\_new}!fsm\_adc.h@{fsm\_adc.h}}
+\doxysubsubsection{\texorpdfstring{fsm\_adc\_new()}{fsm\_adc\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*} fsm\+\_\+adc\+\_\+new (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time\+Adc }\end{DoxyParamCaption})}
+
+
+
+Crea una nueva maquina de estados para leer correctamente el ADC. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em time\+Adc} & Tiempo entre cada lectura/envio del ADC \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+fsm\+\_\+t\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}

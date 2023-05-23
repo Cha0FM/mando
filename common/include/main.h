@@ -1,22 +1,13 @@
-/* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
+ * @file main.h
+ * @author Javier y Manuel
+ * @brief Cabecera del Programa Principal
+ * @version 1.0
+ * @date 2023-05-23
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H
@@ -36,7 +27,15 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+/**
+ * @brief Variable externa de configuracion del ADC para poder usar en el archivo FSM
+ * 
+ */
  extern ADC_HandleTypeDef hadc1;
+ /**
+  * @brief Variable externa para poder usar el boton en el archivo FSM
+  * 
+  */
  extern GPIO_PinState boton;
 /* USER CODE END ET */
 

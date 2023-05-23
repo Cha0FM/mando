@@ -1,26 +1,18 @@
-/* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
+ * @file main.c
+ * @author Javier y Manuel
+ * @brief Programa Principal
+ * @version 1.0
+ * @date 2023-05-23
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_hal.h" 
 #include <stdio.h>
-#include "MY_NRF24.h" //Hal driver del NRF
+#include "MY_NRF24.h"
 #include "fsm_adc.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -35,6 +27,10 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+/**
+ * @brief Tiempo entre cada lectura del ADC, proxima version 1.1
+ * 
+ */
 #define TIEMPO_ADC_MS 2
 /* USER CODE END PD */
 
@@ -66,11 +62,28 @@ static void MX_ADC1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/**
+ * @brief Dirección inequivoca para identificar el enlace Nrf24l01
+ * 
+ */
 uint64_t TxpipeAddrs = 0x11223344AA;
-//Variables de transmisión
-uint32_t myTxData[2]; //variable de envio
-bool AckPayload[1]; //ACK
-uint32_t adcVal;
+/**
+ * @brief Variable que enviaremos a traves del transceptor.
+ * Posicion 0 - Valor del ADC entre 0 y 255
+ * Posicion 1 - Valor del boton 0 o 1
+ * 
+ */
+uint32_t myTxData[2]; 
+/**
+ * @brief Valor del ACK recibido, es un vector por requisitos del buffer del Nrf24l01
+ * True o false
+ * 
+ */
+bool AckPayload[1];
+/**
+ * @brief Boton de cambio de direccion
+ * 
+ */
 GPIO_PinState boton;
 /* USER CODE END 0 */
 
@@ -81,48 +94,108 @@ GPIO_PinState boton;
 int main(void)
 {
   
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  /**
+   * @brief Resetea todos los perifericos, inicializa la interfaz de flasheo y el Systick
+   * 
+   */
   HAL_Init();
-
-  /* Configure the system clock - Nota: el nuestro esta a 16 MHZ */ 
+  /**
+   * @brief Configura el reloj del sistema, en nuestro caso se encarga la HAL y lo hemos puesto a 16 MHZ
+   * 
+   */
   SystemClock_Config();
-
-  /* Initialize all configured peripherals */ 
- 
-  MX_GPIO_Init(); //GPIO para el botón
-  MX_SPI1_Init(); //SPI para el NRFL
-  MX_USART2_UART_Init();//UART para depuración 
+ /**
+  * @brief Inicializa el periferico GPIO para el botón, en nuestro caso configurado por HAL
+  * 
+  */
+  MX_GPIO_Init(); 
+  /**
+   * @brief Inicializa el periferico SPI para el NRFL, en nuestro caso configurado por HAL
+   * 
+   */
+  MX_SPI1_Init(); 
+  /**
+   * @brief Inicializa el periferico para depurar, usado en la entrega intermedia, en nuestro caso configurado por HAL
+   * 
+   */
+  MX_USART2_UART_Init();
+  /**
+   * @brief Inicializa el periferico para leer el ADC, en nuestro caso configurado por HAL
+   * 
+   */
   MX_ADC1_Init();
 
-
+/**
+ * @brief Inicializa la libreria y establece los puertos CE, CSN y el handle del SPI
+ * 
+ * @param nrf24PORT Puerto principal
+ * @param nrfCSN_Pin Chip Select
+ * @param nrfCE_Pin Chip Enable
+ * @param nrfSPI SPI Handler
+ */
 NRF24_begin(CEpin_GPIO_Port,CSNpin_Pin,GPIO_PIN_9,hspi1);
+/**
+ * @brief Inicializa la línea UART 
+ * para comprobar la transmisión según mostramos en la entrega intermedia
+ * 
+ * @param nrf24Uart Uart
+ */
 nrf24_DebugUART_Init(huart2);
-
-printRadioSettings(); //Resetea y printea los ajustes
+/**
+ * @brief Hace print por la terminal de los ajustes,
+ * usado en la entrega intermedia
+ * 
+ */
+printRadioSettings(); 
 
 // ******* SETUP DE TRANSMISIÓN CON ACK *****//
+/**
+ * @brief Parar de escuchar/recibir, obligatorio antes de enviar información
+ * 
+ */
 NRF24_stopListening();
+/**
+ * @brief Prepara el Tx para enviar, con una dirección inequívoca para identificar el enlace,
+ *  el skate/receptor usará la misma
+ * 
+ * @param address Dirección inequívoca para identificar el enlace
+ */
 NRF24_openWritingPipe(TxpipeAddrs);
-NRF24_setAutoAck(true);//para enviar con ACK
-NRF24_setChannel(52);//elegimos el canal
-NRF24_setPayloadSize(32);//tamaño de la payload 
-
+/**
+ * @brief Activa envío con ACK
+ * 
+ * @param enable True o false
+ */
+NRF24_setAutoAck(true);
+/**
+ * @brief Elegimos la frecuencia del canal por el que vamos a transmitir
+ * 
+ * @param channel Valor de canal entre 0-127
+ */
+NRF24_setChannel(52);
+/**
+ * @brief Tamaño de información que podemos enviar, maximo 32 bytes
+ * 
+ * @param size Tamaño
+ */
+NRF24_setPayloadSize(32);
+/**
+ * @brief Activa las Payload dinamicas
+ * 
+ */
 NRF24_enableDynamicPayloads();
+/**
+ * @brief Activa el envio de vuelta del ACK
+ * 
+ */
 NRF24_enableAckPayload();
 
-
 fsm_t * p_adc = fsm_adc_new(TIEMPO_ADC_MS);
- 
   while (1)
   {
-    
-
    fsm_fire(p_adc);
-    
-  //HAL_Delay(1); //Periodo del bucle principal
   }
   fsm_destroy(p_adc);
-
 }
 
 

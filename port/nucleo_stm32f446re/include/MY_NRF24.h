@@ -1,23 +1,13 @@
-/*
-Library:					NRF24L01/NRF24L01+
-Written by:				Mohamed Yaqoob (MYaqoobEmbedded YouTube Channel)
-Date Written:			10/11/2018
-Last modified:		-/-
-Description:			This is an STM32 device driver library for the NRF24L01 Nordic Radio transceiver, using STM HAL libraries
-
-References:				This library was written based on the Arduino NRF24 Open-Source library by J. Coliz and the NRF24 datasheet
-										- https://github.com/maniacbug/RF24
-										- https://www.sparkfun.com/datasheets/Components/SMD/nRF24L01Pluss_Preliminary_Product_Specification_v1_0.pdf
-										
-* Copyright (C) 2018 - M. Yaqoob
-   This is a free software under the GNU license, you can redistribute it and/or modify it under the terms
-   of the GNU General Public Licenseversion 3 as published by the Free Software Foundation.
-	
-   This software library is shared with puplic for educational purposes, without WARRANTY and Author is not liable for any damages caused directly
-   or indirectly by this software, read more about this on the GNU General Public License.
-*/
-
-//List of header files  
+/**
+ * @file NRF24L01/NRF24L01+
+ * @author Mohamed Yaqoob (MYaqoobEmbedded YouTube Channel)
+ * @brief This is an STM32 device driver library for the NRF24L01 Nordic Radio transceiver, using STM HAL libraries
+ * @version 1.0
+ * @date 10/11/2018
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include "stm32f4xx_hal.h"   //** Change this according to your STM32 series **//
 #include "nRF24L01.h"
 #include <stdlib.h>
@@ -98,19 +88,39 @@ void NRF24_flush_rx(void);
 uint8_t NRF24_get_status(void);
 
 //12. Begin function
+/**
+ * @brief Inicializa la libreria y establece los puertos CE, CSN y el handle del SPI
+ * 
+ * @param nrf24PORT Puerto principal
+ * @param nrfCSN_Pin Chip Select
+ * @param nrfCE_Pin Chip Enable
+ * @param nrfSPI SPI Handler
+ */
 void NRF24_begin(GPIO_TypeDef *nrf24PORT, uint16_t nrfCSN_Pin, uint16_t nrfCE_Pin, SPI_HandleTypeDef nrfSPI);
 //13. Listen on open pipes for reading (Must call NRF24_openReadingPipe() first)
 void NRF24_startListening(void);
 //14. Stop listening (essential before any write operation)
+/**
+ * @brief Parar de escuchar/recibir, obligatorio antes de enviar información
+ * 
+ */
 void NRF24_stopListening(void);
 
 //15. Write(Transmit data), returns true if successfully sent
+/**
+ * @brief Escribimos/Transmitimos los datos a traves del transceptor
+ * 
+ * @param buf Buffer a enviar
+ * @param len Longitud del buffer
+ * @return true Si se ejecuta correctamente
+ * @return false Si no
+ */
 bool NRF24_write( const void* buf, uint8_t len );
 //16. Check for available data to read
 bool NRF24_available(void);
 //17. Read received data
 /**
- * @brief Leer los datos recibidos
+ * @brief Leer los datos recibidos (ACK)
  * 
  * @param buf buffer de datos de entrada
  * @param len longitud del buffer
@@ -119,27 +129,56 @@ bool NRF24_available(void);
  */
 bool NRF24_read( void* buf, uint8_t len );
 //18. Open Tx pipe for writing (Cannot perform this while Listenning, has to call NRF24_stopListening)
+/**
+ * @brief //Prepara el Tx para enviar, con una dirección inequívoca para identificar el enlace,
+ *  el skate/receptor usará la misma
+ * 
+ * @param address Dirección inequívoca para identificar el enlace
+ */
 void NRF24_openWritingPipe(uint64_t address);
 //19. Open reading pipe
 void NRF24_openReadingPipe(uint8_t number, uint64_t address);
 //20 set transmit retries (rf24_Retries_e) and delay
 void NRF24_setRetries(uint8_t delay, uint8_t count);
 //21. Set RF channel frequency
+/**
+ * @brief Elegimos la frecuencia del canal por el que vamos a transmitir
+ * 
+ * @param channel Valor de canal entre 0-127
+ */
 void NRF24_setChannel(uint8_t channel);
 //22. Set payload size
+/**
+ * @brief Tamaño de información que podemos enviar, maximo 32 bytes
+ * 
+ * @param size Tamaño
+ */
 void NRF24_setPayloadSize(uint8_t size);
 //23. Get payload size
 uint8_t NRF24_getPayloadSize(void);
 //24. Get dynamic payload size, of latest packet received
 uint8_t NRF24_getDynamicPayloadSize(void);
 //25. Enable payload on Ackknowledge packet
+/**
+ * @brief Activa el envio de vuelta del ACK
+ * 
+ */
 void NRF24_enableAckPayload(void);
 //26. Enable dynamic payloads
+/**
+ * @brief Activa las Payload dinamicas
+ * 
+ */
 void NRF24_enableDynamicPayloads(void);
 void NRF24_disableDynamicPayloads(void);
 //27. Check if module is NRF24L01+ or normal module
 bool NRF24_isNRF_Plus(void) ;
 //28. Set Auto Ack for all
+/**
+ * @brief Activa envío con ACK
+ * 
+ * @param enable True o false
+ */
 void NRF24_setAutoAck(bool enable);
 //29. Set Auto Ack for certain pipe
 void NRF24_setAutoAckPipe( uint8_t pipe, bool enable ) ;
@@ -184,12 +223,23 @@ uint8_t NRF24_GetAckPayloadSize(void);
 
 //**********  DEBUG Functions **********//
 //1. Print radio settings
+/**
+ * @brief Hace print por la terminal de los ajustes,
+ * usado en la entrega intermedia
+ * 
+ */
 void printRadioSettings(void);
 //2. Print Status 
 void printStatusReg(void);
 //3. Print Config 
 void printConfigReg(void);
 //4. Init Variables
+/**
+ * @brief Inicializa la línea UART 
+ * para comprobar la transmisión según mostramos en la entrega intermedia
+ * 
+ * @param nrf24Uart Uart
+ */
 void nrf24_DebugUART_Init(UART_HandleTypeDef nrf24Uart);
 //5. FIFO Status
 void printFIFOstatus(void);

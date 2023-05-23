@@ -1,0 +1,209 @@
+\doxysection{Referencia del archivo common/src/fsm\+\_\+adc.c}
+\hypertarget{fsm__adc_8c}{}\label{fsm__adc_8c}\index{common/src/fsm\_adc.c@{common/src/fsm\_adc.c}}
+
+
+Maquina de estados del Mando-\/\+ADC.  
+
+
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \"{}fsm\+\_\+adc.\+h\"{}}\newline
+{\ttfamily \#include \"{}stm32f4xx\+\_\+hal.\+h\"{}}\newline
+{\ttfamily \#include \"{}stm32f4xx\+\_\+hal\+\_\+adc.\+h\"{}}\newline
+{\ttfamily \#include \"{}stm32f4xx\+\_\+hal\+\_\+gpio.\+h\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \"{}main.\+h\"{}}\newline
+{\ttfamily \#include \"{}MY\+\_\+\+NRF24.\+h\"{}}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfsm__adc__t}{fsm\+\_\+adc\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Estructura de la FSM del Mando-\/\+ADC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{fsm__adc_8c_a25d958ffe1282f00febb20645519987a}{FSM\+\_\+\+ADC\+\_\+\+STATES}} \{ {\bfseries WAITADC}
+, {\bfseries WAITACK}
+ \}
+\begin{DoxyCompactList}\small\item\em Estados de FSM ADC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fsm__adc_8c_a80ad001c7feaee6a10e66d40884918f9}{do\+\_\+read\+\_\+transmit\+\_\+adc}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm)
+\begin{DoxyCompactList}\small\item\em Lee el valor existente en el ADC y boton, y lo transmite, esperando ack. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{fsm__adc_8c_afe142d2fa0a0b45c2357b7d1fd2a6139}{check\+\_\+timeout\+\_\+adc}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm)
+\begin{DoxyCompactList}\small\item\em Comprueba el timer para saber si es el momento de leer/transmitir el ADC. Por falta de tiempo, en esta version no lo hemos implementado, por lo que devolvera true siempre. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{fsm__adc_8c_a8043b8e079b748cbd778bab8d6708b95}{check\+\_\+ack}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm)
+\begin{DoxyCompactList}\small\item\em Comprueba si ha recibido el ack true de vuelta de parte del skate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__adc_8c_a4bb09841f395902576e8e27934fb9c07}{do\+\_\+ack\+\_\+false}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm)
+\begin{DoxyCompactList}\small\item\em Poner el campo del ack a false. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fsm__adc_8c_a6021de1c4f27e45aa0232d78865670ff}{fsm\+\_\+adc\+\_\+new}} (uint32\+\_\+t time\+Adc)
+\begin{DoxyCompactList}\small\item\em Crea una nueva maquina de estados para leer correctamente el ADC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__adc_8c_a290d489dc75da32c46a49c520967db09}{fsm\+\_\+adc\+\_\+init}} (\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+\_\+fsm, uint32\+\_\+t time\+Adc)
+\begin{DoxyCompactList}\small\item\em Inicializa todos los parametros de la FSM para leer correctamente el ADC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Maquina de estados del Mando-\/\+ADC. 
+
+\begin{DoxyAuthor}{Autor}
+Javier y Manuel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2023-\/05-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentación de enumeraciones}
+\Hypertarget{fsm__adc_8c_a25d958ffe1282f00febb20645519987a}\label{fsm__adc_8c_a25d958ffe1282f00febb20645519987a} 
+\index{fsm\_adc.c@{fsm\_adc.c}!FSM\_ADC\_STATES@{FSM\_ADC\_STATES}}
+\index{FSM\_ADC\_STATES@{FSM\_ADC\_STATES}!fsm\_adc.c@{fsm\_adc.c}}
+\doxysubsubsection{\texorpdfstring{FSM\_ADC\_STATES}{FSM\_ADC\_STATES}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fsm__adc_8c_a25d958ffe1282f00febb20645519987a}{FSM\+\_\+\+ADC\+\_\+\+STATES}}}
+
+
+
+Estados de FSM ADC. 
+
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{fsm__adc_8c_a8043b8e079b748cbd778bab8d6708b95}\label{fsm__adc_8c_a8043b8e079b748cbd778bab8d6708b95} 
+\index{fsm\_adc.c@{fsm\_adc.c}!check\_ack@{check\_ack}}
+\index{check\_ack@{check\_ack}!fsm\_adc.c@{fsm\_adc.c}}
+\doxysubsubsection{\texorpdfstring{check\_ack()}{check\_ack()}}
+{\footnotesize\ttfamily bool check\+\_\+ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm }\end{DoxyParamCaption})}
+
+
+
+Comprueba si ha recibido el ack true de vuelta de parte del skate. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & Puntero a la FSM del ADC \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true 
+
+false 
+\end{DoxyReturn}
+\Hypertarget{fsm__adc_8c_afe142d2fa0a0b45c2357b7d1fd2a6139}\label{fsm__adc_8c_afe142d2fa0a0b45c2357b7d1fd2a6139} 
+\index{fsm\_adc.c@{fsm\_adc.c}!check\_timeout\_adc@{check\_timeout\_adc}}
+\index{check\_timeout\_adc@{check\_timeout\_adc}!fsm\_adc.c@{fsm\_adc.c}}
+\doxysubsubsection{\texorpdfstring{check\_timeout\_adc()}{check\_timeout\_adc()}}
+{\footnotesize\ttfamily bool check\+\_\+timeout\+\_\+adc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm }\end{DoxyParamCaption})}
+
+
+
+Comprueba el timer para saber si es el momento de leer/transmitir el ADC. Por falta de tiempo, en esta version no lo hemos implementado, por lo que devolvera true siempre. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & Puntero a la FSM del ADC \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true 
+
+false 
+\end{DoxyReturn}
+\Hypertarget{fsm__adc_8c_a4bb09841f395902576e8e27934fb9c07}\label{fsm__adc_8c_a4bb09841f395902576e8e27934fb9c07} 
+\index{fsm\_adc.c@{fsm\_adc.c}!do\_ack\_false@{do\_ack\_false}}
+\index{do\_ack\_false@{do\_ack\_false}!fsm\_adc.c@{fsm\_adc.c}}
+\doxysubsubsection{\texorpdfstring{do\_ack\_false()}{do\_ack\_false()}}
+{\footnotesize\ttfamily void do\+\_\+ack\+\_\+false (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm }\end{DoxyParamCaption})}
+
+
+
+Poner el campo del ack a false. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & Puntero a la FSM del ADC \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fsm__adc_8c_a80ad001c7feaee6a10e66d40884918f9}\label{fsm__adc_8c_a80ad001c7feaee6a10e66d40884918f9} 
+\index{fsm\_adc.c@{fsm\_adc.c}!do\_read\_transmit\_adc@{do\_read\_transmit\_adc}}
+\index{do\_read\_transmit\_adc@{do\_read\_transmit\_adc}!fsm\_adc.c@{fsm\_adc.c}}
+\doxysubsubsection{\texorpdfstring{do\_read\_transmit\_adc()}{do\_read\_transmit\_adc()}}
+{\footnotesize\ttfamily void do\+\_\+read\+\_\+transmit\+\_\+adc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm }\end{DoxyParamCaption})}
+
+
+
+Lee el valor existente en el ADC y boton, y lo transmite, esperando ack. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & Puntero a la FSM del ADC \\
+\hline
+\end{DoxyParams}
+Escribimos/\+Transmitimos los datos a traves del transceptor
+
+
+\begin{DoxyParams}{Parámetros}
+{\em buf} & Buffer a enviar \\
+\hline
+{\em len} & Longitud del buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true Si se ejecuta correctamente 
+
+false Si no
+\end{DoxyReturn}
+Leer los datos recibidos (ACK)
+
+
+\begin{DoxyParams}{Parámetros}
+{\em buf} & buffer de datos de entrada \\
+\hline
+{\em len} & longitud del buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+true 
+
+false
+\end{DoxyReturn}
+\Hypertarget{fsm__adc_8c_a290d489dc75da32c46a49c520967db09}\label{fsm__adc_8c_a290d489dc75da32c46a49c520967db09} 
+\index{fsm\_adc.c@{fsm\_adc.c}!fsm\_adc\_init@{fsm\_adc\_init}}
+\index{fsm\_adc\_init@{fsm\_adc\_init}!fsm\_adc.c@{fsm\_adc.c}}
+\doxysubsubsection{\texorpdfstring{fsm\_adc\_init()}{fsm\_adc\_init()}}
+{\footnotesize\ttfamily void fsm\+\_\+adc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+\_\+fsm,  }\item[{uint32\+\_\+t}]{time\+Adc }\end{DoxyParamCaption})}
+
+
+
+Inicializa todos los parametros de la FSM para leer correctamente el ADC. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em p\+\_\+fsm} & Puntero a la FSM del ADC \\
+\hline
+{\em time\+Adc} & Tiempo entre cada lectura/envio del ADC \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fsm__adc_8c_a6021de1c4f27e45aa0232d78865670ff}\label{fsm__adc_8c_a6021de1c4f27e45aa0232d78865670ff} 
+\index{fsm\_adc.c@{fsm\_adc.c}!fsm\_adc\_new@{fsm\_adc\_new}}
+\index{fsm\_adc\_new@{fsm\_adc\_new}!fsm\_adc.c@{fsm\_adc.c}}
+\doxysubsubsection{\texorpdfstring{fsm\_adc\_new()}{fsm\_adc\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \texorpdfstring{$\ast$}{*} fsm\+\_\+adc\+\_\+new (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time\+Adc }\end{DoxyParamCaption})}
+
+
+
+Crea una nueva maquina de estados para leer correctamente el ADC. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em time\+Adc} & Tiempo entre cada lectura/envio del ADC \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+fsm\+\_\+t\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}

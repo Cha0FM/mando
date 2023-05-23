@@ -1,0 +1,93 @@
+\doxysection{Referencia del archivo common/include/main.h}
+\hypertarget{main_8h}{}\label{main_8h}\index{common/include/main.h@{common/include/main.h}}
+
+
+Cabecera del Programa Principal.  
+
+
+{\ttfamily \#include \"{}stm32f4xx\+\_\+hal.\+h\"{}}\newline
+\doxysubsubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8h_a21f57a7651fe5ac03619f23c33e12b68}\label{main_8h_a21f57a7651fe5ac03619f23c33e12b68} 
+\#define {\bfseries CSNpin\+\_\+\+Pin}~GPIO\+\_\+\+PIN\+\_\+8
+\item 
+\Hypertarget{main_8h_a940d81c5d0a74788291f15a4c1eddd1a}\label{main_8h_a940d81c5d0a74788291f15a4c1eddd1a} 
+\#define {\bfseries CSNpin\+\_\+\+GPIO\+\_\+\+Port}~GPIOB
+\item 
+\Hypertarget{main_8h_a6c7bde3206789ca5b5bb7e780636a581}\label{main_8h_a6c7bde3206789ca5b5bb7e780636a581} 
+\#define {\bfseries CEpin\+\_\+\+Pin}~GPIO\+\_\+\+PIN\+\_\+9
+\item 
+\Hypertarget{main_8h_a0c9b5e10ed50d2d23a2b7fceb3f1a02b}\label{main_8h_a0c9b5e10ed50d2d23a2b7fceb3f1a02b} 
+\#define {\bfseries CEpin\+\_\+\+GPIO\+\_\+\+Port}~GPIOB
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8h_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{main_8h_a22b804736f5648d52f639b2647d4ed13}{hadc1}}
+\begin{DoxyCompactList}\small\item\em Variable externa de configuracion del ADC para poder usar en el archivo FSM. \end{DoxyCompactList}\item 
+GPIO\+\_\+\+Pin\+State \mbox{\hyperlink{main_8h_a65a6df1a35f04043914708811d0cb969}{boton}}
+\begin{DoxyCompactList}\small\item\em Variable externa para poder usar el boton en el archivo FSM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Cabecera del Programa Principal. 
+
+\begin{DoxyAuthor}{Autor}
+Javier y Manuel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2023-\/05-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{main_8h_a1730ffe1e560465665eb47d9264826f9}\label{main_8h_a1730ffe1e560465665eb47d9264826f9} 
+\index{main.h@{main.h}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{main_8h_a65a6df1a35f04043914708811d0cb969}\label{main_8h_a65a6df1a35f04043914708811d0cb969} 
+\index{main.h@{main.h}!boton@{boton}}
+\index{boton@{boton}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{boton}{boton}}
+{\footnotesize\ttfamily GPIO\+\_\+\+Pin\+State boton\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Variable externa para poder usar el boton en el archivo FSM. 
+
+Variable externa para poder usar el boton en el archivo FSM.\Hypertarget{main_8h_a22b804736f5648d52f639b2647d4ed13}\label{main_8h_a22b804736f5648d52f639b2647d4ed13} 
+\index{main.h@{main.h}!hadc1@{hadc1}}
+\index{hadc1@{hadc1}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{hadc1}{hadc1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} hadc1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Variable externa de configuracion del ADC para poder usar en el archivo FSM. 
+

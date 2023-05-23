@@ -1,0 +1,47 @@
+\doxysubsubsubsection{ADC Common Mode}
+\hypertarget{group___a_d_c_ex___common__mode}{}\label{group___a_d_c_ex___common__mode}\index{ADC Common Mode@{ADC Common Mode}}
+\doxysubsubsubsubsubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_gaac07297889e931df4083427a99211638}\label{group___a_d_c_ex___common__mode_gaac07297889e931df4083427a99211638} 
+\#define {\bfseries ADC\+\_\+\+MODE\+\_\+\+INDEPENDENT}~0x00000000U
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_gac3ad57b1150ca7862fcc932cf19b2fb0}\label{group___a_d_c_ex___common__mode_gac3ad57b1150ca7862fcc932cf19b2fb0} 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+REGSIMULT\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0)
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga2667b75f8acb086aa6ab723466bb3f40}\label{group___a_d_c_ex___common__mode_ga2667b75f8acb086aa6ab723466bb3f40} 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+REGSIMULT\+\_\+\+ALTERTRIG}~((uint32\+\_\+t)ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1)
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga8e81364b24ed3c089bb6993b48a020e9}\label{group___a_d_c_ex___common__mode_ga8e81364b24ed3c089bb6993b48a020e9} 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga5318d363b48a4244335cdafaed0d179c}\label{group___a_d_c_ex___common__mode_ga5318d363b48a4244335cdafaed0d179c} 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+REGSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga29697d148e4ed75c3d2adaef0f3e1385}\label{group___a_d_c_ex___common__mode_ga29697d148e4ed75c3d2adaef0f3e1385} 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+INTERL}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga45e63dd5e2f36e62fa1b2cb9eff891ed}\label{group___a_d_c_ex___common__mode_ga45e63dd5e2f36e62fa1b2cb9eff891ed} 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+ALTERTRIG}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_gaf035650c27a3a4655c2ee42e96a277dd}\label{group___a_d_c_ex___common__mode_gaf035650c27a3a4655c2ee42e96a277dd} 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+REGSIMULT\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga0aea7119339e4474cfdb7f3084c6dce5}\label{group___a_d_c_ex___common__mode_ga0aea7119339e4474cfdb7f3084c6dce5} 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+REGSIMULT\+\_\+\+Alter\+Trig}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga9d5e9c416713570aeecff01f6c006b35}\label{group___a_d_c_ex___common__mode_ga9d5e9c416713570aeecff01f6c006b35} 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_gaa111c2e1827ffebceb3f22deefd951db}\label{group___a_d_c_ex___common__mode_gaa111c2e1827ffebceb3f22deefd951db} 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+REGSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga7c1e457e958e4002726bb9187a5ffe22}\label{group___a_d_c_ex___common__mode_ga7c1e457e958e4002726bb9187a5ffe22} 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+INTERL}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\Hypertarget{group___a_d_c_ex___common__mode_ga5ad65e0e5b27f2f72d4856b3651f0b8b}\label{group___a_d_c_ex___common__mode_ga5ad65e0e5b27f2f72d4856b3651f0b8b} 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+ALTERTRIG}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsubsection{Descripción detallada}

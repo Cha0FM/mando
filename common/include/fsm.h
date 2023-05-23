@@ -1,3 +1,13 @@
+/**
+ * @file fsm.h
+ * @author Javier y Manuel
+ * @brief  Cabecera FSM dada por la asignatura
+ * @version 1.0
+ * @date 2023-05-23
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #ifndef FSM_H_
 #define FSM_H_
 

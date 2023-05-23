@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mando: Referencia del archivo common/src/fsm_adc.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mando<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Proyecto Mando Inalámbrico</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_4e4d22e38ca4e2e8207825ee2d00bc54.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Clases</a> &#124;
+<a href="#enum-members">Enumeraciones</a> &#124;
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo fsm_adc.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Maquina de estados del Mando-ADC.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="fsm__adc_8h_source.html">fsm_adc.h</a>&quot;</code><br />
+<code>#include &quot;stm32f4xx_hal.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="stm32f4xx__hal__adc_8h_source.html">stm32f4xx_hal_adc.h</a>&quot;</code><br />
+<code>#include &quot;stm32f4xx_hal_gpio.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+<code>#include &quot;MY_NRF24.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Clases</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfsm__adc__t.html">fsm_adc_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estructura de la FSM del Mando-ADC.  <a href="structfsm__adc__t.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumeraciones</h2></td></tr>
+<tr class="memitem:a25d958ffe1282f00febb20645519987a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm__adc_8c.html#a25d958ffe1282f00febb20645519987a">FSM_ADC_STATES</a> { <b>WAITADC</b>
+, <b>WAITACK</b>
+ }</td></tr>
+<tr class="memdesc:a25d958ffe1282f00febb20645519987a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estados de FSM ADC.  <a href="fsm__adc_8c.html#a25d958ffe1282f00febb20645519987a">Más...</a><br /></td></tr>
+<tr class="separator:a25d958ffe1282f00febb20645519987a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a80ad001c7feaee6a10e66d40884918f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm__adc_8c.html#a80ad001c7feaee6a10e66d40884918f9">do_read_transmit_adc</a> (<a class="el" href="structfsm__t.html">fsm_t</a> *p_fsm)</td></tr>
+<tr class="memdesc:a80ad001c7feaee6a10e66d40884918f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee el valor existente en el ADC y boton, y lo transmite, esperando ack.  <br /></td></tr>
+<tr class="separator:a80ad001c7feaee6a10e66d40884918f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe142d2fa0a0b45c2357b7d1fd2a6139"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm__adc_8c.html#afe142d2fa0a0b45c2357b7d1fd2a6139">check_timeout_adc</a> (<a class="el" href="structfsm__t.html">fsm_t</a> *p_fsm)</td></tr>
+<tr class="memdesc:afe142d2fa0a0b45c2357b7d1fd2a6139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprueba el timer para saber si es el momento de leer/transmitir el ADC. Por falta de tiempo, en esta version no lo hemos implementado, por lo que devolvera true siempre.  <br /></td></tr>
+<tr class="separator:afe142d2fa0a0b45c2357b7d1fd2a6139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8043b8e079b748cbd778bab8d6708b95"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm__adc_8c.html#a8043b8e079b748cbd778bab8d6708b95">check_ack</a> (<a class="el" href="structfsm__t.html">fsm_t</a> *p_fsm)</td></tr>
+<tr class="memdesc:a8043b8e079b748cbd778bab8d6708b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprueba si ha recibido el ack true de vuelta de parte del skate.  <br /></td></tr>
+<tr class="separator:a8043b8e079b748cbd778bab8d6708b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb09841f395902576e8e27934fb9c07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm__adc_8c.html#a4bb09841f395902576e8e27934fb9c07">do_ack_false</a> (<a class="el" href="structfsm__t.html">fsm_t</a> *p_fsm)</td></tr>
+<tr class="memdesc:a4bb09841f395902576e8e27934fb9c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poner el campo del ack a false.  <br /></td></tr>
+<tr class="separator:a4bb09841f395902576e8e27934fb9c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6021de1c4f27e45aa0232d78865670ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfsm__t.html">fsm_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm__adc_8c.html#a6021de1c4f27e45aa0232d78865670ff">fsm_adc_new</a> (uint32_t timeAdc)</td></tr>
+<tr class="memdesc:a6021de1c4f27e45aa0232d78865670ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea una nueva maquina de estados para leer correctamente el ADC.  <br /></td></tr>
+<tr class="separator:a6021de1c4f27e45aa0232d78865670ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a290d489dc75da32c46a49c520967db09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fsm__adc_8c.html#a290d489dc75da32c46a49c520967db09">fsm_adc_init</a> (<a class="el" href="structfsm__t.html">fsm_t</a> *p_fsm, uint32_t timeAdc)</td></tr>
+<tr class="memdesc:a290d489dc75da32c46a49c520967db09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa todos los parametros de la FSM para leer correctamente el ADC.  <br /></td></tr>
+<tr class="separator:a290d489dc75da32c46a49c520967db09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Maquina de estados del Mando-ADC. </p>
+<dl class="section author"><dt>Autor</dt><dd>Javier y Manuel </dd></dl>
+<dl class="section version"><dt>Versión</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Fecha</dt><dd>2023-05-23</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
+</div><h2 class="groupheader">Documentación de enumeraciones</h2>
+<a id="a25d958ffe1282f00febb20645519987a" name="a25d958ffe1282f00febb20645519987a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25d958ffe1282f00febb20645519987a">&#9670;&#160;</a></span>FSM_ADC_STATES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="fsm__adc_8c.html#a25d958ffe1282f00febb20645519987a">FSM_ADC_STATES</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Estados de FSM ADC. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="a8043b8e079b748cbd778bab8d6708b95" name="a8043b8e079b748cbd778bab8d6708b95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8043b8e079b748cbd778bab8d6708b95">&#9670;&#160;</a></span>check_ack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_ack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsm__t.html">fsm_t</a> *&#160;</td>
+          <td class="paramname"><em>p_fsm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Comprueba si ha recibido el ack true de vuelta de parte del skate. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_fsm</td><td>Puntero a la FSM del ADC </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
+<a id="afe142d2fa0a0b45c2357b7d1fd2a6139" name="afe142d2fa0a0b45c2357b7d1fd2a6139"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe142d2fa0a0b45c2357b7d1fd2a6139">&#9670;&#160;</a></span>check_timeout_adc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_timeout_adc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsm__t.html">fsm_t</a> *&#160;</td>
+          <td class="paramname"><em>p_fsm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Comprueba el timer para saber si es el momento de leer/transmitir el ADC. Por falta de tiempo, en esta version no lo hemos implementado, por lo que devolvera true siempre. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_fsm</td><td>Puntero a la FSM del ADC </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
+<a id="a4bb09841f395902576e8e27934fb9c07" name="a4bb09841f395902576e8e27934fb9c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bb09841f395902576e8e27934fb9c07">&#9670;&#160;</a></span>do_ack_false()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_ack_false </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsm__t.html">fsm_t</a> *&#160;</td>
+          <td class="paramname"><em>p_fsm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Poner el campo del ack a false. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_fsm</td><td>Puntero a la FSM del ADC </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a80ad001c7feaee6a10e66d40884918f9" name="a80ad001c7feaee6a10e66d40884918f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80ad001c7feaee6a10e66d40884918f9">&#9670;&#160;</a></span>do_read_transmit_adc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void do_read_transmit_adc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsm__t.html">fsm_t</a> *&#160;</td>
+          <td class="paramname"><em>p_fsm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lee el valor existente en el ADC y boton, y lo transmite, esperando ack. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_fsm</td><td>Puntero a la FSM del ADC </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Escribimos/Transmitimos los datos a traves del transceptor</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Buffer a enviar </td></tr>
+    <tr><td class="paramname">len</td><td>Longitud del buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true Si se ejecuta correctamente </dd>
+<dd>
+false Si no</dd></dl>
+<p>Leer los datos recibidos (ACK)</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>buffer de datos de entrada </td></tr>
+    <tr><td class="paramname">len</td><td>longitud del buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true </dd>
+<dd>
+false</dd></dl>
+
+</div>
+</div>
+<a id="a290d489dc75da32c46a49c520967db09" name="a290d489dc75da32c46a49c520967db09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a290d489dc75da32c46a49c520967db09">&#9670;&#160;</a></span>fsm_adc_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fsm_adc_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfsm__t.html">fsm_t</a> *&#160;</td>
+          <td class="paramname"><em>p_fsm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeAdc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa todos los parametros de la FSM para leer correctamente el ADC. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_fsm</td><td>Puntero a la FSM del ADC </td></tr>
+    <tr><td class="paramname">timeAdc</td><td>Tiempo entre cada lectura/envio del ADC </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6021de1c4f27e45aa0232d78865670ff" name="a6021de1c4f27e45aa0232d78865670ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6021de1c4f27e45aa0232d78865670ff">&#9670;&#160;</a></span>fsm_adc_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfsm__t.html">fsm_t</a> * fsm_adc_new </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>timeAdc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea una nueva maquina de estados para leer correctamente el ADC. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeAdc</td><td>Tiempo entre cada lectura/envio del ADC </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>fsm_t* </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

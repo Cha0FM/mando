@@ -1,0 +1,246 @@
+\doxysection{Referencia del archivo common/src/main.c}
+\hypertarget{main_8c}{}\label{main_8c}\index{common/src/main.c@{common/src/main.c}}
+
+
+Programa Principal.  
+
+
+{\ttfamily \#include \"{}main.\+h\"{}}\newline
+{\ttfamily \#include \"{}stm32f4xx\+\_\+hal.\+h\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \"{}MY\+\_\+\+NRF24.\+h\"{}}\newline
+{\ttfamily \#include \"{}fsm\+\_\+adc.\+h\"{}}\newline
+\doxysubsubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_a0b12913719761f438cf5f279d7e2e605}{TIEMPO\+\_\+\+ADC\+\_\+\+MS}}~2
+\begin{DoxyCompactList}\small\item\em Tiempo entre cada lectura del ADC, proxima version 1.\+1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{main_8c_a22b804736f5648d52f639b2647d4ed13}{hadc1}}
+\begin{DoxyCompactList}\small\item\em Variable externa de configuracion del ADC para poder usar en el archivo FSM. \end{DoxyCompactList}\item 
+\Hypertarget{main_8c_a9c6222bae4d0328dd843ae099623b40b}\label{main_8c_a9c6222bae4d0328dd843ae099623b40b} 
+SPI\+\_\+\+Handle\+Type\+Def {\bfseries hspi1}
+\item 
+\Hypertarget{main_8c_aa9479c261d65eecedd3d9582f7f0f89c}\label{main_8c_aa9479c261d65eecedd3d9582f7f0f89c} 
+UART\+\_\+\+Handle\+Type\+Def {\bfseries huart2}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{main_8c_a37cfb706a6f95d9296aba742813a5cf8}{Txpipe\+Addrs}} = 0x11223344\+AA
+\begin{DoxyCompactList}\small\item\em Dirección inequivoca para identificar el enlace Nrf24l01. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{main_8c_afbf014784ddd2ec662365f398fba6f9f}{my\+Tx\+Data}} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Variable que enviaremos a traves del transceptor. Posicion 0 -\/ Valor del ADC entre 0 y 255 Posicion 1 -\/ Valor del boton 0 o 1. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{main_8c_ac05d7a375d0f34c1a26a7ec8af42b890}{Ack\+Payload}} \mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Valor del ACK recibido, es un vector por requisitos del buffer del Nrf24l01 True o false. \end{DoxyCompactList}\item 
+GPIO\+\_\+\+Pin\+State \mbox{\hyperlink{main_8c_a65a6df1a35f04043914708811d0cb969}{boton}}
+\begin{DoxyCompactList}\small\item\em Boton de cambio de direccion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Programa Principal. 
+
+\begin{DoxyAuthor}{Autor}
+Javier y Manuel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2023-\/05-\/23
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentación de «define»}
+\Hypertarget{main_8c_a0b12913719761f438cf5f279d7e2e605}\label{main_8c_a0b12913719761f438cf5f279d7e2e605} 
+\index{main.c@{main.c}!TIEMPO\_ADC\_MS@{TIEMPO\_ADC\_MS}}
+\index{TIEMPO\_ADC\_MS@{TIEMPO\_ADC\_MS}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{TIEMPO\_ADC\_MS}{TIEMPO\_ADC\_MS}}
+{\footnotesize\ttfamily \#define TIEMPO\+\_\+\+ADC\+\_\+\+MS~2}
+
+
+
+Tiempo entre cada lectura del ADC, proxima version 1.\+1. 
+
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{main_8c_a1730ffe1e560465665eb47d9264826f9}\label{main_8c_a1730ffe1e560465665eb47d9264826f9} 
+\index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em int} & \\
+\hline
+\end{DoxyRetVals}
+Resetea todos los perifericos, inicializa la interfaz de flasheo y el Systick
+
+Configura el reloj del sistema, en nuestro caso se encarga la HAL y lo hemos puesto a 16 MHZ
+
+Inicializa el periferico GPIO para el botón, en nuestro caso configurado por HAL
+
+Inicializa el periferico SPI para el NRFL, en nuestro caso configurado por HAL
+
+Inicializa el periferico para depurar, usado en la entrega intermedia, en nuestro caso configurado por HAL
+
+Inicializa el periferico para leer el ADC, en nuestro caso configurado por HAL
+
+Inicializa la libreria y establece los puertos CE, CSN y el handle del SPI
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nrf24\+PORT} & Puerto principal \\
+\hline
+{\em nrf\+CSN\+\_\+\+Pin} & Chip Select \\
+\hline
+{\em nrf\+CE\+\_\+\+Pin} & Chip Enable \\
+\hline
+{\em nrf\+SPI} & SPI Handler\\
+\hline
+\end{DoxyParams}
+Inicializa la línea UART para comprobar la transmisión según mostramos en la entrega intermedia
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nrf24\+Uart} & Uart\\
+\hline
+\end{DoxyParams}
+Hace print por la terminal de los ajustes, usado en la entrega intermedia
+
+Parar de escuchar/recibir, obligatorio antes de enviar información
+
+Prepara el Tx para enviar, con una dirección inequívoca para identificar el enlace, el skate/receptor usará la misma
+
+
+\begin{DoxyParams}{Parámetros}
+{\em address} & Dirección inequívoca para identificar el enlace\\
+\hline
+\end{DoxyParams}
+Activa envío con ACK
+
+
+\begin{DoxyParams}{Parámetros}
+{\em enable} & True o false\\
+\hline
+\end{DoxyParams}
+Elegimos la frecuencia del canal por el que vamos a transmitir
+
+
+\begin{DoxyParams}{Parámetros}
+{\em channel} & Valor de canal entre 0-\/127\\
+\hline
+\end{DoxyParams}
+Tamaño de información que podemos enviar, maximo 32 bytes
+
+
+\begin{DoxyParams}{Parámetros}
+{\em size} & Tamaño\\
+\hline
+\end{DoxyParams}
+Activa las Payload dinamicas
+
+Activa el envio de vuelta del ACK\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920} 
+\index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Valores devueltos}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Configure the main internal regulator output voltage
+
+Initializes the RCC Oscillators according to the specified parameters in the RCC\+\_\+\+Osc\+Init\+Type\+Def structure.
+
+Initializes the CPU, AHB and APB buses clocks
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{main_8c_ac05d7a375d0f34c1a26a7ec8af42b890}\label{main_8c_ac05d7a375d0f34c1a26a7ec8af42b890} 
+\index{main.c@{main.c}!AckPayload@{AckPayload}}
+\index{AckPayload@{AckPayload}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{AckPayload}{AckPayload}}
+{\footnotesize\ttfamily bool Ack\+Payload\mbox{[}1\mbox{]}}
+
+
+
+Valor del ACK recibido, es un vector por requisitos del buffer del Nrf24l01 True o false. 
+
+\Hypertarget{main_8c_a65a6df1a35f04043914708811d0cb969}\label{main_8c_a65a6df1a35f04043914708811d0cb969} 
+\index{main.c@{main.c}!boton@{boton}}
+\index{boton@{boton}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{boton}{boton}}
+{\footnotesize\ttfamily GPIO\+\_\+\+Pin\+State boton}
+
+
+
+Boton de cambio de direccion. 
+
+Variable externa para poder usar el boton en el archivo FSM.\Hypertarget{main_8c_a22b804736f5648d52f639b2647d4ed13}\label{main_8c_a22b804736f5648d52f639b2647d4ed13} 
+\index{main.c@{main.c}!hadc1@{hadc1}}
+\index{hadc1@{hadc1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hadc1}{hadc1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} hadc1}
+
+
+
+Variable externa de configuracion del ADC para poder usar en el archivo FSM. 
+
+\Hypertarget{main_8c_afbf014784ddd2ec662365f398fba6f9f}\label{main_8c_afbf014784ddd2ec662365f398fba6f9f} 
+\index{main.c@{main.c}!myTxData@{myTxData}}
+\index{myTxData@{myTxData}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{myTxData}{myTxData}}
+{\footnotesize\ttfamily uint32\+\_\+t my\+Tx\+Data\mbox{[}2\mbox{]}}
+
+
+
+Variable que enviaremos a traves del transceptor. Posicion 0 -\/ Valor del ADC entre 0 y 255 Posicion 1 -\/ Valor del boton 0 o 1. 
+
+\Hypertarget{main_8c_a37cfb706a6f95d9296aba742813a5cf8}\label{main_8c_a37cfb706a6f95d9296aba742813a5cf8} 
+\index{main.c@{main.c}!TxpipeAddrs@{TxpipeAddrs}}
+\index{TxpipeAddrs@{TxpipeAddrs}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{TxpipeAddrs}{TxpipeAddrs}}
+{\footnotesize\ttfamily uint64\+\_\+t Txpipe\+Addrs = 0x11223344\+AA}
+
+
+
+Dirección inequivoca para identificar el enlace Nrf24l01. 
+

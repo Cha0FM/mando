@@ -1,3 +1,13 @@
+/**
+ * @file fsm.c
+ * @author Javier y Manuel
+ * @brief FSM dada por la asignatura
+ * @version 1.0
+ * @date 2023-05-23
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include <stdlib.h>
 #include "fsm.h"
 

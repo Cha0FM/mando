@@ -1,3 +1,13 @@
+/**
+ * @file fsm_adc.h
+ * @author Javier y Manuel
+ * @brief Cabecera de la FSM del Mando-ADC
+ * @version 1.0
+ * @date 2023-05-23
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #ifndef FSM_ADC_H_
 #define FSM_ADC_H_
 

@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mando: Referencia del archivo common/src/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mando<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Proyecto Mando Inalámbrico</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_4e4d22e38ca4e2e8207825ee2d00bc54.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo main.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Programa Principal.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+<code>#include &quot;stm32f4xx_hal.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;MY_NRF24.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="fsm__adc_8h_source.html">fsm_adc.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a0b12913719761f438cf5f279d7e2e605"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0b12913719761f438cf5f279d7e2e605">TIEMPO_ADC_MS</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a0b12913719761f438cf5f279d7e2e605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiempo entre cada lectura del ADC, proxima version 1.1.  <br /></td></tr>
+<tr class="separator:a0b12913719761f438cf5f279d7e2e605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a70af21c671abfcc773614a9a4f63d920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</a> (void)</td></tr>
+<tr class="memdesc:a70af21c671abfcc773614a9a4f63d920"><td class="mdescLeft">&#160;</td><td class="mdescRight">System Clock Configuration.  <br /></td></tr>
+<tr class="separator:a70af21c671abfcc773614a9a4f63d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
+<tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The application entry point.  <br /></td></tr>
+<tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1730ffe1e560465665eb47d9264826f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1730ffe1e560465665eb47d9264826f9">Error_Handler</a> (void)</td></tr>
+<tr class="memdesc:a1730ffe1e560465665eb47d9264826f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is executed in case of error occurrence.  <br /></td></tr>
+<tr class="separator:a1730ffe1e560465665eb47d9264826f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a22b804736f5648d52f639b2647d4ed13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_d_c___handle_type_def.html">ADC_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a22b804736f5648d52f639b2647d4ed13">hadc1</a></td></tr>
+<tr class="memdesc:a22b804736f5648d52f639b2647d4ed13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable externa de configuracion del ADC para poder usar en el archivo FSM.  <br /></td></tr>
+<tr class="separator:a22b804736f5648d52f639b2647d4ed13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c6222bae4d0328dd843ae099623b40b"><td class="memItemLeft" align="right" valign="top"><a id="a9c6222bae4d0328dd843ae099623b40b" name="a9c6222bae4d0328dd843ae099623b40b"></a>
+SPI_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>hspi1</b></td></tr>
+<tr class="separator:a9c6222bae4d0328dd843ae099623b40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9479c261d65eecedd3d9582f7f0f89c"><td class="memItemLeft" align="right" valign="top"><a id="aa9479c261d65eecedd3d9582f7f0f89c" name="aa9479c261d65eecedd3d9582f7f0f89c"></a>
+UART_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>huart2</b></td></tr>
+<tr class="separator:aa9479c261d65eecedd3d9582f7f0f89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37cfb706a6f95d9296aba742813a5cf8"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a37cfb706a6f95d9296aba742813a5cf8">TxpipeAddrs</a> = 0x11223344AA</td></tr>
+<tr class="memdesc:a37cfb706a6f95d9296aba742813a5cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirección inequivoca para identificar el enlace Nrf24l01.  <br /></td></tr>
+<tr class="separator:a37cfb706a6f95d9296aba742813a5cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbf014784ddd2ec662365f398fba6f9f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#afbf014784ddd2ec662365f398fba6f9f">myTxData</a> [2]</td></tr>
+<tr class="memdesc:afbf014784ddd2ec662365f398fba6f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variable que enviaremos a traves del transceptor. Posicion 0 - Valor del ADC entre 0 y 255 Posicion 1 - Valor del boton 0 o 1.  <br /></td></tr>
+<tr class="separator:afbf014784ddd2ec662365f398fba6f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac05d7a375d0f34c1a26a7ec8af42b890"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac05d7a375d0f34c1a26a7ec8af42b890">AckPayload</a> [1]</td></tr>
+<tr class="memdesc:ac05d7a375d0f34c1a26a7ec8af42b890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valor del ACK recibido, es un vector por requisitos del buffer del Nrf24l01 True o false.  <br /></td></tr>
+<tr class="separator:ac05d7a375d0f34c1a26a7ec8af42b890"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65a6df1a35f04043914708811d0cb969"><td class="memItemLeft" align="right" valign="top">GPIO_PinState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a65a6df1a35f04043914708811d0cb969">boton</a></td></tr>
+<tr class="memdesc:a65a6df1a35f04043914708811d0cb969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boton de cambio de direccion.  <br /></td></tr>
+<tr class="separator:a65a6df1a35f04043914708811d0cb969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Programa Principal. </p>
+<dl class="section author"><dt>Autor</dt><dd>Javier y Manuel </dd></dl>
+<dl class="section version"><dt>Versión</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Fecha</dt><dd>2023-05-23</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2023 </dd></dl>
+</div><h2 class="groupheader">Documentación de «define»</h2>
+<a id="a0b12913719761f438cf5f279d7e2e605" name="a0b12913719761f438cf5f279d7e2e605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b12913719761f438cf5f279d7e2e605">&#9670;&#160;</a></span>TIEMPO_ADC_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TIEMPO_ADC_MS&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tiempo entre cada lectura del ADC, proxima version 1.1. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="a1730ffe1e560465665eb47d9264826f9" name="a1730ffe1e560465665eb47d9264826f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1730ffe1e560465665eb47d9264826f9">&#9670;&#160;</a></span>Error_Handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Error_Handler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function is executed in case of error occurrence. </p>
+<dl class="retval"><dt>Valores devueltos</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The application entry point. </p>
+<dl class="retval"><dt>Valores devueltos</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">int</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Resetea todos los perifericos, inicializa la interfaz de flasheo y el Systick</p>
+<p>Configura el reloj del sistema, en nuestro caso se encarga la HAL y lo hemos puesto a 16 MHZ</p>
+<p>Inicializa el periferico GPIO para el botón, en nuestro caso configurado por HAL</p>
+<p>Inicializa el periferico SPI para el NRFL, en nuestro caso configurado por HAL</p>
+<p>Inicializa el periferico para depurar, usado en la entrega intermedia, en nuestro caso configurado por HAL</p>
+<p>Inicializa el periferico para leer el ADC, en nuestro caso configurado por HAL</p>
+<p>Inicializa la libreria y establece los puertos CE, CSN y el handle del SPI</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nrf24PORT</td><td>Puerto principal </td></tr>
+    <tr><td class="paramname">nrfCSN_Pin</td><td>Chip Select </td></tr>
+    <tr><td class="paramname">nrfCE_Pin</td><td>Chip Enable </td></tr>
+    <tr><td class="paramname">nrfSPI</td><td>SPI Handler</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Inicializa la línea UART para comprobar la transmisión según mostramos en la entrega intermedia</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nrf24Uart</td><td>Uart</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Hace print por la terminal de los ajustes, usado en la entrega intermedia</p>
+<p>Parar de escuchar/recibir, obligatorio antes de enviar información</p>
+<p>Prepara el Tx para enviar, con una dirección inequívoca para identificar el enlace, el skate/receptor usará la misma</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Dirección inequívoca para identificar el enlace</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Activa envío con ACK</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>True o false</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Elegimos la frecuencia del canal por el que vamos a transmitir</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>Valor de canal entre 0-127</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Tamaño de información que podemos enviar, maximo 32 bytes</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Tamaño</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Activa las Payload dinamicas</p>
+<p>Activa el envio de vuelta del ACK</p>
+
+</div>
+</div>
+<a id="a70af21c671abfcc773614a9a4f63d920" name="a70af21c671abfcc773614a9a4f63d920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70af21c671abfcc773614a9a4f63d920">&#9670;&#160;</a></span>SystemClock_Config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemClock_Config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>System Clock Configuration. </p>
+<dl class="retval"><dt>Valores devueltos</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Configure the main internal regulator output voltage</p>
+<p>Initializes the RCC Oscillators according to the specified parameters in the RCC_OscInitTypeDef structure.</p>
+<p>Initializes the CPU, AHB and APB buses clocks</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="ac05d7a375d0f34c1a26a7ec8af42b890" name="ac05d7a375d0f34c1a26a7ec8af42b890"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac05d7a375d0f34c1a26a7ec8af42b890">&#9670;&#160;</a></span>AckPayload</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AckPayload[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Valor del ACK recibido, es un vector por requisitos del buffer del Nrf24l01 True o false. </p>
+
+</div>
+</div>
+<a id="a65a6df1a35f04043914708811d0cb969" name="a65a6df1a35f04043914708811d0cb969"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65a6df1a35f04043914708811d0cb969">&#9670;&#160;</a></span>boton</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GPIO_PinState boton</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Boton de cambio de direccion. </p>
+<p>Variable externa para poder usar el boton en el archivo FSM.</p>
+
+</div>
+</div>
+<a id="a22b804736f5648d52f639b2647d4ed13" name="a22b804736f5648d52f639b2647d4ed13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b804736f5648d52f639b2647d4ed13">&#9670;&#160;</a></span>hadc1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_a_d_c___handle_type_def.html">ADC_HandleTypeDef</a> hadc1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable externa de configuracion del ADC para poder usar en el archivo FSM. </p>
+
+</div>
+</div>
+<a id="afbf014784ddd2ec662365f398fba6f9f" name="afbf014784ddd2ec662365f398fba6f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbf014784ddd2ec662365f398fba6f9f">&#9670;&#160;</a></span>myTxData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t myTxData[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variable que enviaremos a traves del transceptor. Posicion 0 - Valor del ADC entre 0 y 255 Posicion 1 - Valor del boton 0 o 1. </p>
+
+</div>
+</div>
+<a id="a37cfb706a6f95d9296aba742813a5cf8" name="a37cfb706a6f95d9296aba742813a5cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37cfb706a6f95d9296aba742813a5cf8">&#9670;&#160;</a></span>TxpipeAddrs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t TxpipeAddrs = 0x11223344AA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dirección inequivoca para identificar el enlace Nrf24l01. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

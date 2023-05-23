@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mando: Archivo de código fuente common/include/fsm.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mando<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Proyecto Mando Inalámbrico</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_11fbc4217d50ab21044e5ad6614aede5.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">fsm.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="fsm_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef FSM_H_</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define FSM_H_</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structfsm__t.html">fsm_t</a> <a class="code hl_struct" href="structfsm__t.html">fsm_t</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="fsm_8h.html#a0b58a6e1c0707054a9f0df9379684083">   19</a></span><span class="keyword">typedef</span> bool (*<a class="code hl_typedef" href="fsm_8h.html#a0b58a6e1c0707054a9f0df9379684083">fsm_input_func_t</a>)(<a class="code hl_struct" href="structfsm__t.html">fsm_t</a> *);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="fsm_8h.html#ab9f0952fdbd6e84f1faa86547e1b42f5">   22</a></span><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="fsm_8h.html#ab9f0952fdbd6e84f1faa86547e1b42f5">fsm_output_func_t</a>)(<a class="code hl_struct" href="structfsm__t.html">fsm_t</a> *);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structfsm__trans__t.html">   25</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structfsm__trans__t.html">fsm_trans_t</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structfsm__trans__t.html#adc67dd348bb6fc59cb4d59d598747274">   27</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structfsm__trans__t.html#adc67dd348bb6fc59cb4d59d598747274">orig_state</a>;        </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structfsm__trans__t.html#a88eefe4fbfe9c61845f867752d692ef1">   28</a></span>    <a class="code hl_typedef" href="fsm_8h.html#a0b58a6e1c0707054a9f0df9379684083">fsm_input_func_t</a> <a class="code hl_variable" href="structfsm__trans__t.html#a88eefe4fbfe9c61845f867752d692ef1">in</a>;   </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structfsm__trans__t.html#af125a66cfa85df848aa173961218e809">   29</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structfsm__trans__t.html#af125a66cfa85df848aa173961218e809">dest_state</a>;        </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structfsm__trans__t.html#aa14b0ae2ea26e60da884d09f281f7302">   30</a></span>    <a class="code hl_typedef" href="fsm_8h.html#ab9f0952fdbd6e84f1faa86547e1b42f5">fsm_output_func_t</a> <a class="code hl_variable" href="structfsm__trans__t.html#aa14b0ae2ea26e60da884d09f281f7302">out</a>; </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="fsm_8h.html#a97922fb44881e0422468792d115dd866">   31</a></span>} <a class="code hl_struct" href="structfsm__trans__t.html">fsm_trans_t</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structfsm__t.html">   34</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structfsm__t.html">fsm_t</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structfsm__t.html#ab250e61dab922ea23423a06fd1e6ea34">   36</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structfsm__t.html#ab250e61dab922ea23423a06fd1e6ea34">current_state</a>; </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structfsm__t.html#a6c3c1228679eb15c274cc8bf30c334a0">   37</a></span>    <a class="code hl_struct" href="structfsm__trans__t.html">fsm_trans_t</a> *<a class="code hl_variable" href="structfsm__t.html#a6c3c1228679eb15c274cc8bf30c334a0">p_tt</a>; </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><a class="code hl_struct" href="structfsm__t.html">fsm_t</a> *<a class="code hl_function" href="fsm_8h.html#a9b0d45e79c69edb09b4c7679a819f0bf">fsm_new</a>(<a class="code hl_struct" href="structfsm__trans__t.html">fsm_trans_t</a> *p_tt);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> <a class="code hl_function" href="fsm_8h.html#aee4d00cd2b36015dfbe8ab3eb02a7d7a">fsm_init</a>(<a class="code hl_struct" href="structfsm__t.html">fsm_t</a> *p_fsm, <a class="code hl_struct" href="structfsm__trans__t.html">fsm_trans_t</a> *p_tt);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">void</span> <a class="code hl_function" href="fsm_8h.html#ab9f849bd2d80e5efaa320ddb59b4b246">fsm_fire</a>(<a class="code hl_struct" href="structfsm__t.html">fsm_t</a> *p_fsm);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keywordtype">void</span> <a class="code hl_function" href="fsm_8h.html#a42ab412fe7a2ac8efb84e813d638128c">fsm_destroy</a>(<a class="code hl_struct" href="structfsm__t.html">fsm_t</a> *p_fsm);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif </span><span class="comment">/* FSM_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="afsm_8h_html_a0b58a6e1c0707054a9f0df9379684083"><div class="ttname"><a href="fsm_8h.html#a0b58a6e1c0707054a9f0df9379684083">fsm_input_func_t</a></div><div class="ttdeci">bool(* fsm_input_func_t)(fsm_t *)</div><div class="ttdoc">alias for the input condition function of a Finite State Machine (FSM).</div><div class="ttdef"><b>Definition</b> fsm.h:19</div></div>
+<div class="ttc" id="afsm_8h_html_a42ab412fe7a2ac8efb84e813d638128c"><div class="ttname"><a href="fsm_8h.html#a42ab412fe7a2ac8efb84e813d638128c">fsm_destroy</a></div><div class="ttdeci">void fsm_destroy(fsm_t *p_fsm)</div><div class="ttdoc">Frees the memory allocated in the heap for a given Finite State Machine (FSM).</div><div class="ttdef"><b>Definition</b> fsm.c:41</div></div>
+<div class="ttc" id="afsm_8h_html_a9b0d45e79c69edb09b4c7679a819f0bf"><div class="ttname"><a href="fsm_8h.html#a9b0d45e79c69edb09b4c7679a819f0bf">fsm_new</a></div><div class="ttdeci">fsm_t * fsm_new(fsm_trans_t *p_tt)</div><div class="ttdoc">allocates memory on the heap and returns a pointer to a new Finite State Machine (FSM).</div><div class="ttdef"><b>Definition</b> fsm.c:14</div></div>
+<div class="ttc" id="afsm_8h_html_ab9f0952fdbd6e84f1faa86547e1b42f5"><div class="ttname"><a href="fsm_8h.html#ab9f0952fdbd6e84f1faa86547e1b42f5">fsm_output_func_t</a></div><div class="ttdeci">void(* fsm_output_func_t)(fsm_t *)</div><div class="ttdoc">alias for the output modification function of a Finite State Machine (FSM).</div><div class="ttdef"><b>Definition</b> fsm.h:22</div></div>
+<div class="ttc" id="afsm_8h_html_ab9f849bd2d80e5efaa320ddb59b4b246"><div class="ttname"><a href="fsm_8h.html#ab9f849bd2d80e5efaa320ddb59b4b246">fsm_fire</a></div><div class="ttdeci">void fsm_fire(fsm_t *p_fsm)</div><div class="ttdoc">it reads the transition table of a Finite State Machine (FSM) and, if any input condition is met,...</div><div class="ttdef"><b>Definition</b> fsm.c:46</div></div>
+<div class="ttc" id="afsm_8h_html_aee4d00cd2b36015dfbe8ab3eb02a7d7a"><div class="ttname"><a href="fsm_8h.html#aee4d00cd2b36015dfbe8ab3eb02a7d7a">fsm_init</a></div><div class="ttdeci">void fsm_init(fsm_t *p_fsm, fsm_trans_t *p_tt)</div><div class="ttdoc">Configures the initial state of a provided Finite State Machine (FSM) according to its transition tab...</div><div class="ttdef"><b>Definition</b> fsm.c:32</div></div>
+<div class="ttc" id="astructfsm__t_html"><div class="ttname"><a href="structfsm__t.html">fsm_t</a></div><div class="ttdoc">struct to define a Finite State Machine (FSM).</div><div class="ttdef"><b>Definition</b> fsm.h:35</div></div>
+<div class="ttc" id="astructfsm__t_html_a6c3c1228679eb15c274cc8bf30c334a0"><div class="ttname"><a href="structfsm__t.html#a6c3c1228679eb15c274cc8bf30c334a0">fsm_t::p_tt</a></div><div class="ttdeci">fsm_trans_t * p_tt</div><div class="ttdoc">pointer to the state transition table.</div><div class="ttdef"><b>Definition</b> fsm.h:37</div></div>
+<div class="ttc" id="astructfsm__t_html_ab250e61dab922ea23423a06fd1e6ea34"><div class="ttname"><a href="structfsm__t.html#ab250e61dab922ea23423a06fd1e6ea34">fsm_t::current_state</a></div><div class="ttdeci">int current_state</div><div class="ttdoc">current state of the FSM.</div><div class="ttdef"><b>Definition</b> fsm.h:36</div></div>
+<div class="ttc" id="astructfsm__trans__t_html"><div class="ttname"><a href="structfsm__trans__t.html">fsm_trans_t</a></div><div class="ttdoc">transition of a Finite State Machine (FSM).</div><div class="ttdef"><b>Definition</b> fsm.h:26</div></div>
+<div class="ttc" id="astructfsm__trans__t_html_a88eefe4fbfe9c61845f867752d692ef1"><div class="ttname"><a href="structfsm__trans__t.html#a88eefe4fbfe9c61845f867752d692ef1">fsm_trans_t::in</a></div><div class="ttdeci">fsm_input_func_t in</div><div class="ttdoc">input condition function.</div><div class="ttdef"><b>Definition</b> fsm.h:28</div></div>
+<div class="ttc" id="astructfsm__trans__t_html_aa14b0ae2ea26e60da884d09f281f7302"><div class="ttname"><a href="structfsm__trans__t.html#aa14b0ae2ea26e60da884d09f281f7302">fsm_trans_t::out</a></div><div class="ttdeci">fsm_output_func_t out</div><div class="ttdoc">output modification function.</div><div class="ttdef"><b>Definition</b> fsm.h:30</div></div>
+<div class="ttc" id="astructfsm__trans__t_html_adc67dd348bb6fc59cb4d59d598747274"><div class="ttname"><a href="structfsm__trans__t.html#adc67dd348bb6fc59cb4d59d598747274">fsm_trans_t::orig_state</a></div><div class="ttdeci">int orig_state</div><div class="ttdoc">origin state.</div><div class="ttdef"><b>Definition</b> fsm.h:27</div></div>
+<div class="ttc" id="astructfsm__trans__t_html_af125a66cfa85df848aa173961218e809"><div class="ttname"><a href="structfsm__trans__t.html#af125a66cfa85df848aa173961218e809">fsm_trans_t::dest_state</a></div><div class="ttdeci">int dest_state</div><div class="ttdoc">destination state.</div><div class="ttdef"><b>Definition</b> fsm.h:29</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

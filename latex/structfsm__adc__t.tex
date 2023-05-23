@@ -1,0 +1,63 @@
+\doxysection{Referencia de la estructura fsm\+\_\+adc\+\_\+t}
+\hypertarget{structfsm__adc__t}{}\label{structfsm__adc__t}\index{fsm\_adc\_t@{fsm\_adc\_t}}
+
+
+Estructura de la FSM del Mando-\/\+ADC.  
+
+
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} \mbox{\hyperlink{structfsm__adc__t_a0d5f02a63782e06db9a1d858d1f97627}{fsm}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structfsm__adc__t_a0228ec450c14897b5302afdc31c56405}{adc\+Val}}
+\item 
+bool \mbox{\hyperlink{structfsm__adc__t_a150eec3388a0a35664539584f02842b5}{ack}} \mbox{[}1\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structfsm__adc__t_aa6aabd8f43e72470eedf7bfbd5981441}{time\+Adc}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structfsm__adc__t_afe9c33b76ab587159387db829ba1b794}{my\+Tx\+Data}} \mbox{[}32\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Estructura de la FSM del Mando-\/\+ADC. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{structfsm__adc__t_a150eec3388a0a35664539584f02842b5}\label{structfsm__adc__t_a150eec3388a0a35664539584f02842b5} 
+\index{fsm\_adc\_t@{fsm\_adc\_t}!ack@{ack}}
+\index{ack@{ack}!fsm\_adc\_t@{fsm\_adc\_t}}
+\doxysubsubsection{\texorpdfstring{ack}{ack}}
+{\footnotesize\ttfamily bool fsm\+\_\+adc\+\_\+t\+::ack\mbox{[}1\mbox{]}}
+
+AcK de vuelta \Hypertarget{structfsm__adc__t_a0228ec450c14897b5302afdc31c56405}\label{structfsm__adc__t_a0228ec450c14897b5302afdc31c56405} 
+\index{fsm\_adc\_t@{fsm\_adc\_t}!adcVal@{adcVal}}
+\index{adcVal@{adcVal}!fsm\_adc\_t@{fsm\_adc\_t}}
+\doxysubsubsection{\texorpdfstring{adcVal}{adcVal}}
+{\footnotesize\ttfamily uint32\+\_\+t fsm\+\_\+adc\+\_\+t\+::adc\+Val}
+
+Valor del Potenciometro ADC de 0-\/255 \Hypertarget{structfsm__adc__t_a0d5f02a63782e06db9a1d858d1f97627}\label{structfsm__adc__t_a0d5f02a63782e06db9a1d858d1f97627} 
+\index{fsm\_adc\_t@{fsm\_adc\_t}!fsm@{fsm}}
+\index{fsm@{fsm}!fsm\_adc\_t@{fsm\_adc\_t}}
+\doxysubsubsection{\texorpdfstring{fsm}{fsm}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfsm__t}{fsm\+\_\+t}} fsm\+\_\+adc\+\_\+t\+::fsm}
+
+Internal FSM from the library \Hypertarget{structfsm__adc__t_afe9c33b76ab587159387db829ba1b794}\label{structfsm__adc__t_afe9c33b76ab587159387db829ba1b794} 
+\index{fsm\_adc\_t@{fsm\_adc\_t}!myTxData@{myTxData}}
+\index{myTxData@{myTxData}!fsm\_adc\_t@{fsm\_adc\_t}}
+\doxysubsubsection{\texorpdfstring{myTxData}{myTxData}}
+{\footnotesize\ttfamily uint32\+\_\+t fsm\+\_\+adc\+\_\+t\+::my\+Tx\+Data\mbox{[}32\mbox{]}}
+
+Buffer de transmision \Hypertarget{structfsm__adc__t_aa6aabd8f43e72470eedf7bfbd5981441}\label{structfsm__adc__t_aa6aabd8f43e72470eedf7bfbd5981441} 
+\index{fsm\_adc\_t@{fsm\_adc\_t}!timeAdc@{timeAdc}}
+\index{timeAdc@{timeAdc}!fsm\_adc\_t@{fsm\_adc\_t}}
+\doxysubsubsection{\texorpdfstring{timeAdc}{timeAdc}}
+{\footnotesize\ttfamily uint32\+\_\+t fsm\+\_\+adc\+\_\+t\+::time\+Adc}
+
+Duracion entre cada muestra del ADC 
+
+La documentación de esta estructura está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+common/src/\mbox{\hyperlink{fsm__adc_8c}{fsm\+\_\+adc.\+c}}\end{DoxyCompactItemize}

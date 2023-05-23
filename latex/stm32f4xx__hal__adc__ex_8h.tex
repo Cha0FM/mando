@@ -1,0 +1,160 @@
+\doxysection{Referencia del archivo port/nucleo\+\_\+stm32f446re/include/stm32f4xx\+\_\+hal\+\_\+adc\+\_\+ex.h}
+\hypertarget{stm32f4xx__hal__adc__ex_8h}{}\label{stm32f4xx__hal__adc__ex_8h}\index{port/nucleo\_stm32f446re/include/stm32f4xx\_hal\_adc\_ex.h@{port/nucleo\_stm32f446re/include/stm32f4xx\_hal\_adc\_ex.h}}
+
+
+Header file of ADC HAL module.  
+
+
+{\ttfamily \#include \"{}stm32f4xx\+\_\+hal\+\_\+def.\+h\"{}}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_a_d_c___injection_conf_type_def}{ADC\+\_\+\+Injection\+Conf\+Type\+Def}}
+\begin{DoxyCompactList}\small\item\em ADC Configuration injected Channel structure definition. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_a_d_c___multi_mode_type_def}{ADC\+\_\+\+Multi\+Mode\+Type\+Def}}
+\begin{DoxyCompactList}\small\item\em ADC Configuration multi-\/mode structure definition ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries ADC\+\_\+\+MODE\+\_\+\+INDEPENDENT}~0x00000000U
+\item 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+REGSIMULT\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0)
+\item 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+REGSIMULT\+\_\+\+ALTERTRIG}~((uint32\+\_\+t)ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1)
+\item 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+REGSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1))
+\item 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+INTERL}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+DUALMODE\+\_\+\+ALTERTRIG}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+REGSIMULT\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+REGSIMULT\+\_\+\+Alter\+Trig}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1))
+\item 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+INJECSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+REGSIMULT}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1))
+\item 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+INTERL}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+1 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+TRIPLEMODE\+\_\+\+ALTERTRIG}~((uint32\+\_\+t)(ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+4 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CCR\+\_\+\+MULTI\+\_\+0))
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___direct__memory__access__mode__for__multi__mode_ga59163da6d23f587f951ce21d74542795}{ADC\+\_\+\+DMAACCESSMODE\+\_\+\+DISABLED}}~0x00000000U
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___direct__memory__access__mode__for__multi__mode_gadb55bb780e7c0a58878287f205f88e33}{ADC\+\_\+\+DMAACCESSMODE\+\_\+1}}~((uint32\+\_\+t)ADC\+\_\+\+CCR\+\_\+\+DMA\+\_\+0)
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___direct__memory__access__mode__for__multi__mode_ga33b7e654725c8de70c9ca5a1e1b3d139}{ADC\+\_\+\+DMAACCESSMODE\+\_\+2}}~((uint32\+\_\+t)ADC\+\_\+\+CCR\+\_\+\+DMA\+\_\+1)
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___direct__memory__access__mode__for__multi__mode_ga2613348408ee2a5685f1d06f6f7780dc}{ADC\+\_\+\+DMAACCESSMODE\+\_\+3}}~((uint32\+\_\+t)ADC\+\_\+\+CCR\+\_\+\+DMA)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONVEDGE\+\_\+\+NONE}~0x00000000U
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONVEDGE\+\_\+\+RISING}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTEN\+\_\+0)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONVEDGE\+\_\+\+FALLING}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTEN\+\_\+1)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONVEDGE\+\_\+\+RISINGFALLING}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTEN)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T1\+\_\+\+CC4}~0x00000000U
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T1\+\_\+\+TRGO}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+0)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T2\+\_\+\+CC1}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+1)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T2\+\_\+\+TRGO}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+1 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T3\+\_\+\+CC2}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+2)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T3\+\_\+\+CC4}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T4\+\_\+\+CC1}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+1))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T4\+\_\+\+CC2}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+1 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T4\+\_\+\+CC3}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+3)
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T4\+\_\+\+TRGO}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T5\+\_\+\+CC4}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+1))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T5\+\_\+\+TRGO}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+1 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T8\+\_\+\+CC2}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+2))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T8\+\_\+\+CC3}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+0))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+T8\+\_\+\+CC4}~((uint32\+\_\+t)(ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+3 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+2 \texorpdfstring{$\vert$}{|} ADC\+\_\+\+CR2\+\_\+\+JEXTSEL\+\_\+1))
+\item 
+\#define {\bfseries ADC\+\_\+\+EXTERNALTRIGINJECCONV\+\_\+\+EXT\+\_\+\+IT15}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTSEL)
+\item 
+\#define {\bfseries ADC\+\_\+\+INJECTED\+\_\+\+SOFTWARE\+\_\+\+START}~((uint32\+\_\+t)ADC\+\_\+\+CR2\+\_\+\+JEXTSEL + 1U)
+\item 
+\#define {\bfseries ADC\+\_\+\+INJECTED\+\_\+\+RANK\+\_\+1}~0x00000001U
+\item 
+\#define {\bfseries ADC\+\_\+\+INJECTED\+\_\+\+RANK\+\_\+2}~0x00000002U
+\item 
+\#define {\bfseries ADC\+\_\+\+INJECTED\+\_\+\+RANK\+\_\+3}~0x00000003U
+\item 
+\#define {\bfseries ADC\+\_\+\+INJECTED\+\_\+\+RANK\+\_\+4}~0x00000004U
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___private___macros_ga4abf4c7de28a42d7b124c9e403a6e537}{IS\+\_\+\+ADC\+\_\+\+MODE}}(MODE)
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___private___macros_gacc017b6a9b3ae942307fa95242cc4aa1}{IS\+\_\+\+ADC\+\_\+\+DMA\+\_\+\+ACCESS\+\_\+\+MODE}}(MODE)
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___private___macros_ga1071d8b9c241b032c87c0f858d8de517}{IS\+\_\+\+ADC\+\_\+\+EXT\+\_\+\+INJEC\+\_\+\+TRIG\+\_\+\+EDGE}}(EDGE)
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___private___macros_ga3cb8cadbff46e432b5e000c3a7489a0b}{IS\+\_\+\+ADC\+\_\+\+EXT\+\_\+\+INJEC\+\_\+\+TRIG}}(INJTRIG)
+\item 
+\#define {\bfseries IS\+\_\+\+ADC\+\_\+\+INJECTED\+\_\+\+LENGTH}(LENGTH)~(((LENGTH) $>$= 1U) \&\& ((LENGTH) $<$= 4U))
+\item 
+\#define {\bfseries IS\+\_\+\+ADC\+\_\+\+INJECTED\+\_\+\+RANK}(RANK)~(((RANK) $>$= 1U) \&\& ((RANK) $<$= 4U))
+\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___private___macros_gaa40c3e803cf20a8aebc3735a714606ad}{ADC\+\_\+\+JSQR}}(\+\_\+\+CHANNELNB\+\_\+,  \+\_\+\+RANKNB\+\_\+,  \+\_\+\+JSQR\+\_\+\+JL\+\_\+)~(((uint32\+\_\+t)((uint16\+\_\+t)(\+\_\+\+CHANNELNB\+\_\+))) $<$$<$ (5U \texorpdfstring{$\ast$}{*} (uint8\+\_\+t)(((\+\_\+\+RANKNB\+\_\+) + 3U) -\/ (\+\_\+\+JSQR\+\_\+\+JL\+\_\+))))
+\begin{DoxyCompactList}\small\item\em Set the selected injected Channel rank. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___a_d_c_ex___private___macros_gaeeddaa2d55f8826dcb5a6e7a2366c31c}{ADC\+\_\+\+COMMON\+\_\+\+REGISTER}}(\+\_\+\+\_\+\+HANDLE\+\_\+\+\_\+)~ADC1\+\_\+\+COMMON
+\begin{DoxyCompactList}\small\item\em Defines if the selected ADC is within ADC common register ADC123 or ADC1 if available (ADC2, ADC3 availability depends on STM32 product) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Start} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Stop} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Poll\+For\+Conversion} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc, uint32\+\_\+t Timeout)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Start\+\_\+\+IT} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Stop\+\_\+\+IT} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc)
+\item 
+uint32\+\_\+t {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Get\+Value} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc, uint32\+\_\+t Injected\+Rank)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Multi\+Mode\+Start\+\_\+\+DMA} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc, uint32\+\_\+t \texorpdfstring{$\ast$}{*}p\+Data, uint32\+\_\+t Length)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Multi\+Mode\+Stop\+\_\+\+DMA} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc)
+\item 
+uint32\+\_\+t {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Multi\+Mode\+Get\+Value} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc)
+\item 
+void {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Conv\+Cplt\+Callback} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Injected\+Config\+Channel} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc, \mbox{\hyperlink{struct_a_d_c___injection_conf_type_def}{ADC\+\_\+\+Injection\+Conf\+Type\+Def}} \texorpdfstring{$\ast$}{*}s\+Config\+Injected)
+\item 
+HAL\+\_\+\+Status\+Type\+Def {\bfseries HAL\+\_\+\+ADCEx\+\_\+\+Multi\+Mode\+Config\+Channel} (\mbox{\hyperlink{struct_a_d_c___handle_type_def}{ADC\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hadc, \mbox{\hyperlink{struct_a_d_c___multi_mode_type_def}{ADC\+\_\+\+Multi\+Mode\+Type\+Def}} \texorpdfstring{$\ast$}{*}multimode)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Header file of ADC HAL module. 
+
+\begin{DoxyAuthor}{Autor}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Atención}
+
+\end{DoxyAttention}
+Copyright (c) 2017 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 

@@ -1,12 +1,13 @@
-/*
-Library:				NRF24L01 software library for STM32 MCUs
-Written by:			Mohamed Yaqoob
-Date written:		25/10/2018
-Last modified:	-/-
-Description:
-
-*/
-
+/**
+ * @file nRF24L01.h
+ * @author Mohamed Yaqoob
+ * @brief NRF24L01 software library for STM32 MCUs
+ * @version 0.1
+ * @date 25/10/2018
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #define _BV(x) (1<<(x))
 
 /* Memory Map */
