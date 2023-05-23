@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @author Javier y Manuel
- * @brief Programa Principal
+ * @brief Programa Principal Mando
  * @version 1.0
  * @date 2023-05-23
  * 
